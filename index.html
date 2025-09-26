@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dev@127.4.7.8</title>
+
+    <link rel="icon" type="png|image" href="IMAGES/sailogo.jpg">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+</head>
+<body>
+    <canvas id="pixelTrail"></canvas>
+    <script src="JAVASCRIPT/mouse-trail.js"></script> 
+    <script src="JAVASCRIPT/matrix.js"></script>
+    <div id="mouseTrail"></div> 
+    <div id="pixelTrail"></div>
+    <header class="header">
+        <a href="#" class="logo">{Portfolio}</a>
+
+        <nav class="navbar">
+            <a href="index.html" style="--i:1;" class="active">Home</a>
+            <a href="about.html" style="--i:2;">About</a>
+            <a href="skills.html" style="--i:3;">Skills</a>
+            <a href="projects.html" style="--i:4;">Projects</a>
+            <a href="contact.html" style="--i:5;">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home" class="home">
+
+        <div class="home-content" data-scroll data-scroll-speed="-5">
+            <h3 class="mu">Hello, It's me</h3>
+            <h1>Deva kumar</h1>
+            <h3>And I'm a <span class="pro-text">
+                <script>
+                var typed = new Typed(".pro-text", {
+                    strings: [
+                    "Cybersec Enthusiast",
+                    "Ethical Hacker",
+                    "IoT Hacker",
+                    "Developer",
+                    "Linux Admin",
+                    "Innovator",
+                    "AI Researcher"
+                    ],
+                    typeSpeed: 100,
+                    backSpeed: 100,
+                    backDelay: 1000,
+                    loop: true
+                });
+                </script>
+            </span></h3>
+            
+            <p>This portfolio highlights my passion for cybersecurity and my commitment to ethical practices.<br><br>
+               I have acquired fundamental knowledge and skills in various areas of ethical hacking, 
+                allowing me to contribute to the security of organizations and individuals.<br><br>
+                Successfully completed multiple innovative projects showcasing practical applications of my knowledge.
+            </p>
+
+            <div class="home-sci">
+                <a href="https://github.com/Dev-0618" target="_blank"><i class='bx bxl-github'></i></a>
+                <a href="https://www.linkedin.com/in/dev0root/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://youtube.com/@devakumar6723" target="_blank"><i class='bx bxl-youtube'></i></a>
+                
+            </div>
+            <a href="Dev-resume.pdf" class="btn-box" download="Deva CV/Resume">Download Resume</a>
+        </div>
+
+        <div class="home-img">
+            <div class="pixel-frame">
+                <div class="slideshow">
+                    <img src="IMAGES/dev1.jpeg" alt="Devakumar1">
+                    <img src="IMAGES/dev2.jpeg" alt="Devakumar2">
+                    <img src="IMAGES/dev3.jpeg" alt="Devakumar3">
+                    <img src="IMAGES/dev4.jpeg" alt="Devakumar4">
+                    <img src="IMAGES/dev5.jpeg" alt="Devakumar5">
+                    <img src="IMAGES/dev6.jpeg" alt="Devakumar6">
+                    <img src="IMAGES/dev7.jpeg" alt="Devakumar7">
+                    <img src="IMAGES/dev8.jpeg" alt="Devakumar8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

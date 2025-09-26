@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me - dev@127.4.7.8</title>
+
+    <link rel="icon" type="png|image" href="IMAGES/sailogo.jpg">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background-color: black;
+            color: rgb(255, 255, 255);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Necessary for animations */
+        #mouseTrail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        #pixelTrail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Ensures all content is on top of the animations */
+        .contact-section, .header {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Contact Form and Section Styles */
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 100px 10%;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+        
+        .contact-form {
+            width: 100%;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border: 2px solid #fff;
+            box-shadow: 6px 6px 0px 0px #fff;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #fff;
+            color: #000;
+            border: 2px solid #fff;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .contact-form .btn:hover {
+            background-color: transparent;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mouseTrail"></div> 
+    <canvas id="pixelTrail"></canvas>
+    
+    <header class="header">
+        <a href="#" class="logo">{Contact}</a>
+        <nav class="navbar">
+            <a href="index.html" style="--i:1;">Home</a>
+            <a href="about.html" style="--i:2;">About</a>
+            <a href="skills.html" style="--i:3;">Skills</a>
+            <a href="projects.html" style="--i:4;">Projects</a>
+            <a href="contact.html" style="--i:5;" class="active">Contact</a>
+        </nav>
+    </header>
+
+    <section class="contact-section">
+        <h2>Get in Touch</h2>
+
+<form name="contact-form" class="contact-form">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="B1" name="Name" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="C1" name="Email" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="D1" name="Message" rows="5" required></textarea>
+    </div>
+
+    <button type="submit" class="btn">Send Message</button>
+</form>
+    </section>
+
+    <script src="JAVASCRIPT/matrix.js"></script>
+    <script src="JAVASCRIPT/mouse-trail.js"></script>
+    <script src="JAVASCRIPT/form-handler.js"></script>
+</body>
+</html>

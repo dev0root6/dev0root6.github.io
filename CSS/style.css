@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'VT323', monospace;
+}
+
+/* Container for the mouse trail pixels */
+#mouseTrail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows mouse clicks to pass through */
+    z-index: 100; /* Puts the trail on top of your content */
+}
+
+/* Style for each individual pixel in the trail */
+.pixel-trail-element {
+    position: absolute;
+    width: 8px; /* Adjust size for smaller/larger pixels */
+    height: 8px;
+    background-color: #fff;
+    opacity: 0;
+    animation: fadeAndShrink 0.7s forwards; /* Animation for fading out */
+    image-rendering: pixelated; 
+}
+
+@keyframes fadeAndShrink {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+/*------*/
+#pixelTrail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows mouse clicks to pass through */
+    z-index: -1;
+}
+
+.header, .home, .home-content {
+    position: relative;
+    z-index: 1; /* Makes sure these elements are on top of the canvas. */
+}
+
+/* Make sure the rest of your styles are correctly applied. */
+body {
+    background-color: #000;
+    color: #9d9d9d;
+    /* ...other body styles... */
+}
+
+.pixel {
+    position: absolute;
+    width: 6px; /* Adjust size for smaller/larger pixels */
+    height: 6px;
+    background-color: #707070;
+    opacity: 0;
+    animation: fadeAndShrink 1s forwards; /* Animation for fading out */
+    /* This ensures a crisp, blocky look */
+    image-rendering: pixelated; 
+}
+
+@keyframes fadeAndShrink {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+body:active::before {
+  content: '';
+  position: fixed;
+  top: var(--y);
+  left: var(--x);
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  z-index: 9999;
+  /* Pixelated box-shadow for a 3D effect */
+  box-shadow: 2px 2px 0px 0px #aaa;
+  animation: pop .1s ease-out forwards;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+/* Optional: This can be used as a background. */
+.pixel-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, #333 1px, transparent 1px),
+                      linear-gradient(to bottom, #333 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    border-bottom: 2px solid #fff;
+}
+
+.logo {
+    font-size: 32px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.navbar a {
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: color 0.3s, background-color 0.3s;
+    border: 2px solid transparent;
+    padding: 5px 10px;
+    opacity: 1;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+.home {
+    display: flex;
+    /* Aligns content to the far left and far right */
+    justify-content: space-between; 
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    padding: 100px 10% 0;
+}
+
+.home-content {
+    max-width: 600px;
+    /* Pushes the content to the left */
+    margin-right: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.home-content h1 {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 3px;
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+    animation-delay: 0.5s;
+    text-shadow: none;
+}
+
+.home-content h3 {
+    font-size: 32px;
+    font-weight: 700;
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+    animation-delay: 0.8s;
+    text-shadow: none;
+}
+
+.mu {
+    margin-top: 50px;
+}
+
+.home-content h3 span {
+    color: #fff;
+}
+
+.home-content p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 20px 0 40px;
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+    animation-delay: 1.1s;
+}
+
+.home-sci {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #fff;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    opacity: 1;
+}
+
+.home-sci a:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-box {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #fff;
+    color: #000;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, color 0.3s;
+    border: 2px solid #fff;
+    border-radius: 0;
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+    animation-delay: 1.4s;
+    box-shadow: none;
+}
+
+.btn-box:hover {
+    background: transparent;
+    color: #fff;
+}
+
+.home-img {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin-top: 50px;
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+    animation-delay: 1.7s;
+}
+
+.pixel-frame {
+    width: 100%;
+    height: 100%;
+    border: 4px solid #fff;
+    padding: 10px;
+    background-color: #000;
+    box-shadow: 8px 8px 0px 0px #fff;
+}
+
+.slideshow {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slideshow img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: slideshow-animation 24s infinite;
+    image-rendering: pixelated; 
+}
+
+.slideshow img:nth-child(1) { animation-delay: 0s; }
+.slideshow img:nth-child(2) { animation-delay: 3s; }
+.slideshow img:nth-child(3) { animation-delay: 6s; }
+.slideshow img:nth-child(4) { animation-delay: 9s; }
+.slideshow img:nth-child(5) { animation-delay: 12s; }
+.slideshow img:nth-child(6) { animation-delay: 15s; }
+.slideshow img:nth-child(7) { animation-delay: 18s; }
+.slideshow img:nth-child(8) { animation-delay: 21s; }
+
+.about {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px 10% 0;
+    margin-top: 10%;
+}
+
+.about-img img {
+    padding: auto;
+    border: 4px solid #fff;
+    box-shadow: 8px 8px 0px 0px #fff;
+}
+
+.about-content h3 {
+    font-size: 32px;
+    font-weight: 700;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.about-content p {
+    font-size: 18px;
+    margin: 20px 0 0;
+    text-align: left;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.8s;
+}
+
+.projects {
+    width: 100%;
+    padding: 70px 10% 0;
+    background-color: #000;
+}
+
+.projects h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 40px;
+    font-size: 36px;
+    text-shadow: none;
+}
+
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.project-card {
+    background-color: #111;
+    border: 2px solid #fff;
+    border-radius: 0;
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 6px 6px 0px 0px #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px 0px #fff;
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 0;
+    image-rendering: pixelated;
+    border: 2px solid #fff;
+}
+
+.project-card h3 {
+    font-size: 24px;
+    color: #fff;
+    margin: 15px 0;
+}
+
+.project-card p {
+    font-size: 16px;
+    color: #fff;
+    margin: 10px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 0;
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+    margin-top: 10px;
+    border: 2px solid #fff;
+}
+
+.btn:hover {
+    background: transparent;
+    color: #fff;
+    box-shadow: none;
+}
+
+/* New, simplified animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideshow-animation {
+    0% { opacity: 0; }
+    8% { opacity: 1; }
+    15% { opacity: 1; }
+    23% { opacity: 0; }
+    100% { opacity: 0; }
+}

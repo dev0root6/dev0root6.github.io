@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dev@127.4.7.8</title>
+
+    <link rel="icon" type="png|image" href="IMAGES/sailogo.jpg">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background-color: black;
+            color: rgb(255, 255, 255);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .about-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 90px 10%;
+            text-align: center;
+        }
+
+        .description {
+            width: 90%;
+            margin: 20px 0;
+            font-size: 25px;
+            line-height: 1.5;
+            color: lightgray;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 60px;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="mouseTrail"></div> 
+    <canvas id="pixelTrail"></canvas>
+    
+    <script src="JAVASCRIPT/matrix.js"></script>
+    <script src="JAVASCRIPT/mouse-trail.js"></script>
+
+
+    <header class="header">
+        <a href="#" class="logo">{Portfolio}</a>
+        <nav class="navbar">
+            <a href="index.html" style="--i:1;" class="active">Home</a>
+            <a href="about.html" style="--i:2;">About</a>
+            <a href="skills.html" style="--i:3;">Skills</a>
+            <a href="projects.html" style="--i:4;">Projects</a>
+            <a href="contact.html" style="--i:5;">Contact</a>
+        </nav>
+    </header>
+
+    <section class="about-section" id="about">
+        <h2>About Me</h2>
+        
+        <div class="description">
+            I am a highly driven cybersecurity and AI enthusiast, deeply passionate about exploring the complexities of technology. My journey into the field began with a keen interest in understanding how systems work, which led me to focus on areas like IoT hacking, vulnerability analysis, and prompt engineering.
+        </div>
+
+        <div class="description">
+            A pivotal moment in my career occurred when I discovered a significant vulnerability in META AI's WhatsApp version. Through meticulous analysis, I identified a flaw that exposed sensitive user information. This experience was not only a testament to my skills in vulnerability analysis but also emphasized the importance of ethical hacking in safeguarding user data.
+        </div>
+
+        <div class="description">
+            I am committed to continuous learning and development, regularly engaging in projects that challenge my skills and expand my knowledge. Whether it’s collaborating with others or diving deep into independent research, my goal is to contribute to the field of cybersecurity and AI in meaningful ways.
+        </div>
+    </section>
+
+</body>
+</html>
