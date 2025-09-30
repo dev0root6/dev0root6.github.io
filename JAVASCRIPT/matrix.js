@@ -8,7 +8,19 @@ let canvasHeight = window.innerHeight;
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
 
-// Listen for window resize to adjust canvas size dynamically
+// Global mouse object to track position
+const mouse = {
+    x: undefined,
+    y: undefined
+};
+
+// Event listener to update mouse position
+window.addEventListener('mousemove', (event) => {
+    mouse.x = event.x;
+    mouse.y = event.y;
+});
+
+// Event listener for window resize to adjust canvas size dynamically
 window.addEventListener('resize', () => {
     canvasWidth = window.innerWidth;
     canvasHeight = window.innerHeight;
@@ -85,11 +97,14 @@ function animate() {
         p.draw();
     });
 
-    // Draw lines between particles that are close
+    // *** Adjusted for Less Density ***
+    const maxDistance = 200; // Reduced range for particle-to-particle connections
+    const mouseConnectDistance = 150; // Reduced range for particle-to-mouse connections
+
+    // 1. Draw lines between particles that are close
     for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
             const dist = distance(particles[i], particles[j]);
-            const maxDistance = 150; // Maximum distance to draw a line
 
             if (dist < maxDistance) {
                 ctx.beginPath();
@@ -102,6 +117,24 @@ function animate() {
                 ctx.closePath();
             }
         }
+    }
+
+    // 2. Draw lines from particles to the mouse cursor
+    if (mouse.x !== undefined && mouse.y !== undefined) {
+        particles.forEach(p => {
+            const distToMouse = distance(p, mouse);
+
+            if (distToMouse < mouseConnectDistance) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(mouse.x, mouse.y);
+                
+                // Cyan color for mouse interaction
+                ctx.strokeStyle = `rgba(255, 255, 255, ${1 - (distToMouse / mouseConnectDistance)})`; 
+                ctx.stroke();
+                ctx.closePath();
+            }
+        });
     }
 }
 
