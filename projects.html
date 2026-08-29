@@ -9,6 +9,23 @@
     <link rel="icon" type="png|image" href="IMAGES/sailogo.jpg">
     <link rel="stylesheet" href="CSS/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+    .terminal{max-width:820px;margin:20px auto 50px;background:#0d0d0d;border:2px solid #fff;
+        box-shadow:6px 6px 0 0 #fff;font-family:'Courier New',monospace;text-align:left;overflow:hidden}
+    .terminal-bar{display:flex;align-items:center;gap:8px;background:#1a1a1a;border-bottom:2px solid #fff;padding:8px 12px}
+    .terminal-bar .dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+    .terminal-bar .r{background:#ff5f56}.terminal-bar .y{background:#ffbd2e}.terminal-bar .g{background:#27c93f}
+    .terminal-bar .ttl{color:#888;font-size:13px;margin-left:8px}
+    .terminal-body{padding:14px 16px;height:300px;overflow-y:auto;font-size:14px;line-height:1.6;color:#e0e0e0}
+    .terminal-body::-webkit-scrollbar{width:8px}.terminal-body::-webkit-scrollbar-thumb{background:#333}
+    .terminal-body .out{white-space:pre-wrap;word-break:break-word;margin:0 0 2px}
+    .terminal-body .grn{color:#00e08a}.terminal-body .amb{color:#ffcb3d}.terminal-body .cy{color:#3dd6ff}.terminal-body .dim{color:#666}
+    .terminal-body a{color:#3dd6ff;text-decoration:underline}
+    .terminal-line{display:flex;align-items:center;gap:8px}
+    .terminal-line .ps1{color:#00e08a;flex-shrink:0}
+    .terminal-input{background:transparent;border:none;outline:none;color:#e0e0e0;
+        font-family:'Courier New',monospace;font-size:14px;flex:1;caret-color:#00e08a}
+    </style>
 </head>
 
 <body>
@@ -33,6 +50,79 @@
     <section id="projects" class="projects">
 
         <h1>My Projects</h1>
+
+        <div class="terminal" id="terminal">
+            <div class="terminal-bar">
+                <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                <span class="ttl">dev@127.4.7.8: ~/projects</span>
+            </div>
+            <div class="terminal-body" id="termBody">
+                <p class="out"><span class="grn">Welcome to dev-shell v1.0</span> — an interactive tour of my work.</p>
+                <p class="out dim">Type <span class="amb">help</span> and hit Enter to begin. Try <span class="amb">ls</span>, <span class="amb">open ble</span>, or <span class="amb">whoami</span>.</p>
+                <div class="terminal-line">
+                    <span class="ps1">dev@127.4.7.8:~$</span>
+                    <input class="terminal-input" id="termIn" autocomplete="off" spellcheck="false" aria-label="terminal input">
+                </div>
+            </div>
+        </div>
+
+        <script>
+        (function(){
+            var body=document.getElementById('termBody'),
+                inp=document.getElementById('termIn'),
+                line=inp.parentElement, hist=[], hi=0;
+            function projects(){
+                return [].map.call(document.querySelectorAll('.project-card'),function(c){
+                    var a=c.querySelector('a.btn'); return a?{name:c.querySelector('h3').textContent.trim(),
+                        desc:c.querySelector('p').textContent.trim(),url:a.href}:null;
+                }).filter(Boolean);
+            }
+            function print(html,cls){var p=document.createElement('p');p.className='out'+(cls?' '+cls:'');
+                p.innerHTML=html;body.insertBefore(p,line);}
+            function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+            var cmds={
+                help:function(){print('Available commands:');
+                    [['help','show this help'],['ls','list all projects'],['open <name>','open a project on GitHub'],
+                     ['whoami','who is behind this'],['skills','go to skills page'],['about','go to about page'],
+                     ['contact','go to contact page'],['resume','open my resume'],['clear','clear the screen'],
+                     ['sudo','nice try']].forEach(function(c){
+                        print('  <span class="amb">'+c[0]+'</span>'+' '.repeat(Math.max(1,16-c[0].length))+'<span class="dim">'+c[1]+'</span>');});},
+                ls:function(){var ps=projects();print('<span class="cy">'+ps.length+' projects found:</span>');
+                    ps.forEach(function(p,i){print('  <span class="grn">'+String(i+1).padStart(2,'0')+'</span>  '+esc(p.name));});},
+                open:function(arg){if(!arg){print('usage: open &lt;name&gt;','amb');return;}
+                    var ps=projects(),q=arg.toLowerCase(),
+                        m=ps.filter(function(p){return p.name.toLowerCase().indexOf(q)>-1;});
+                    if(!m.length){print('no project matches "'+esc(arg)+'". try <span class="amb">ls</span>.','amb');return;}
+                    m.slice(0,5).forEach(function(p){
+                        print('opening <span class="grn">'+esc(p.name)+'</span> → <a href="'+p.url+'" target="_blank">'+p.url+'</a>');});
+                    window.open(m[0].url,'_blank');},
+                whoami:function(){print('<span class="grn">S Deva Kumar</span> — Cybersecurity Researcher &amp; Pentester.');
+                    print('Builder of hardware hacks, security tooling, and AI-driven apps.','dim');},
+                skills:function(){print('routing to ./skills ...','cy');setTimeout(function(){location.href='skills.html';},500);},
+                about:function(){print('routing to ./about ...','cy');setTimeout(function(){location.href='about.html';},500);},
+                contact:function(){print('routing to ./contact ...','cy');setTimeout(function(){location.href='contact.html';},500);},
+                resume:function(){print('opening resume ...','cy');window.open('Dev-resume.pdf','_blank');},
+                sudo:function(){print("user is not in the sudoers file. This incident will be reported. 😈",'amb');},
+                clear:function(){[].slice.call(body.querySelectorAll('.out')).forEach(function(n){n.remove();});},
+                echo:function(arg){print(esc(arg||''));},
+                date:function(){print(new Date().toString());}
+            };
+            function run(raw){
+                var parts=raw.trim().split(/\s+/),cmd=parts.shift(),arg=parts.join(' ');
+                print('<span class="grn">dev@127.4.7.8:~$</span> '+esc(raw));
+                if(!cmd)return;
+                if(cmds[cmd])cmds[cmd](arg);
+                else print('command not found: '+esc(cmd)+' — type <span class="amb">help</span>','amb');
+            }
+            inp.addEventListener('keydown',function(e){
+                if(e.key==='Enter'){var v=inp.value;if(v.trim()){hist.push(v);hi=hist.length;}inp.value='';run(v);body.scrollTop=body.scrollHeight;}
+                else if(e.key==='ArrowUp'){if(hi>0){hi--;inp.value=hist[hi]||'';}e.preventDefault();}
+                else if(e.key==='ArrowDown'){if(hi<hist.length){hi++;inp.value=hist[hi]||'';}e.preventDefault();}
+            });
+            document.getElementById('terminal').addEventListener('click',function(){inp.focus();});
+        })();
+        </script>
+
 
         <div class="project-container">
             <div class="project-card">
@@ -103,6 +193,20 @@
                 <h3>QuickBot</h3>
                 <p>AI-powered chatbot for fetching Google search results, cloning websites, and Google Dorking.</p>
                 <a href="https://github.com/dev0root6/QucikBot" target="_blank" class="btn">View Project</a>
+            </div>
+
+            <div class="project-card">
+                <img src="IMAGES/Jojo.svg" alt="JoJo">
+                <h3>JoJo</h3>
+                <p>A browser-based C learning IDE for absolute beginners, built for our college — a live C editor with Judge0 run output, an AI "Sensei" tutor, and a code-to-diagram panel powered by Mermaid.</p>
+                <a href="https://github.com/dev0root6/jojo" target="_blank" class="btn">View Project</a>
+            </div>
+
+            <div class="project-card">
+                <img src="IMAGES/LabPrograms.png" alt="Lab Programs">
+                <h3>Lab Programs</h3>
+                <p>A collection of hands-on Generative AI and Machine Learning lab programs — word embeddings, Word2Vec, HuggingFace pipelines and clustering — with Python scripts and Jupyter notebooks on real datasets.</p>
+                <a href="https://github.com/dev0root6/Lab-Programs" target="_blank" class="btn">View Project</a>
             </div>
 
             <div class="project-card">
