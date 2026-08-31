@@ -1,0 +1,5 @@
+# Copy to .dev.vars (git-ignored) for `wrangler dev`.
+# Generate the pair with: npm run vapid
+VAPID_PUBLIC_KEY="paste-public-key"
+VAPID_PRIVATE_KEY="paste-private-key"
+VAPID_SUBJECT="mailto:you@example.com"

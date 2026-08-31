@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Signal Ping</string>
+    <!-- Digital Asset Links statement, resolved against the build-time host.
+         Chrome fetches https://<host>/.well-known/assetlinks.json and checks
+         that it lists this app's package and signing fingerprint. -->
+    <string name="asset_statements" translatable="false">
+        [{
+          \"relation\": [\"delegate_permission/common.handle_all_urls\"],
+          \"target\": {
+            \"namespace\": \"web\",
+            \"site\": \"@string/launch_url\"
+          }
+        }]
+    </string>
+</resources>

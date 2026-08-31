@@ -1,0 +1,21 @@
+{
+  "name": "signal-ping",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Private paired alert PWA — Cloudflare Workers + D1 + Web Push",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "vapid": "node scripts/generate-vapid.mjs",
+    "db:create": "wrangler d1 create signal_ping",
+    "db:migrate:local": "wrangler d1 migrations apply signal_ping --local",
+    "db:migrate": "wrangler d1 migrations apply signal_ping --remote",
+    "test": "node scripts/test-push-crypto.mjs",
+    "assetlinks": "node scripts/assetlinks.mjs",
+    "icons": "python3 scripts/generate-icons.py"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

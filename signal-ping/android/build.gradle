@@ -1,0 +1,9 @@
+// Root build file. The Android Gradle Plugin version is pinned here; the app
+// module applies it.
+plugins {
+    id 'com.android.application' version '8.7.3' apply false
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.layout.buildDirectory
+}

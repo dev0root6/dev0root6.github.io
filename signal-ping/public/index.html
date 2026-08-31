@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Signal Ping</title>
+    <meta name="description" content="A private, two-person attention signal." />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+    <meta name="theme-color" content="#101214" />
+    <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Signal Ping" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  </head>
+  <body>
+    <!-- ================= Onboarding: pair with a shared code ================= -->
+    <main id="view-pair" class="view" hidden>
+      <header class="app-header">
+        <h1>Signal Ping</h1>
+        <p class="muted">A private, two-person attention signal.</p>
+      </header>
+
+      <section class="card">
+        <h2>Pair up</h2>
+        <p class="muted">
+          Both of you enter the same pairing code. Whoever goes first creates the pair; the second
+          person joins it. Nobody else can join after that.
+        </p>
+        <label for="pair-name">Your name</label>
+        <input id="pair-name" type="text" autocomplete="nickname" placeholder="e.g. Dev" maxlength="40" />
+
+        <label for="pair-code">Pairing code (8+ characters, shared privately)</label>
+        <div class="row">
+          <input id="pair-code" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"
+                 placeholder="e.g. quiet-harbor-4417" maxlength="128" />
+          <button id="pair-suggest" class="btn-secondary" type="button">Suggest</button>
+        </div>
+
+        <label for="pair-api">Server URL</label>
+        <input id="pair-api" type="url" autocomplete="off" spellcheck="false"
+               placeholder="https://signal-ping.your-subdomain.workers.dev" />
+        <p class="hint">Leave as-is if this page is served by the Worker itself.</p>
+
+        <button id="pair-submit" class="btn-primary">Pair this device</button>
+
+        <details class="restore">
+          <summary>Already paired? Add another device</summary>
+          <p class="muted">
+            Paste the access token from Settings on your other device. A pair only holds two people,
+            so this is how a second phone or a reinstall gets back in.
+          </p>
+          <label for="restore-token">Access token</label>
+          <input id="restore-token" type="text" autocomplete="off" spellcheck="false" />
+          <button id="restore-submit" class="btn-secondary">Restore this device</button>
+        </details>
+      </section>
+    </main>
+
+    <!-- ========================= Main app ========================= -->
+    <main id="view-app" class="view" hidden>
+      <header class="app-header">
+        <h1>Signal Ping</h1>
+        <button id="open-settings" class="icon-btn" aria-label="Settings">Settings</button>
+      </header>
+
+      <p id="status-line" class="status" role="status" aria-live="polite"></p>
+
+      <!-- FEATURE 1 — Live Alert -->
+      <section class="card feature">
+        <h2>Live Alert</h2>
+        <p class="muted">One tap. Buzzes <span id="partner-name">your partner</span> right now.</p>
+        <button id="live-alert" class="btn-huge">
+          <span id="live-label">Free to talk</span>
+        </button>
+      </section>
+
+      <!-- FEATURE 2 — Self Timer Alert (local device only) -->
+      <section class="card feature">
+        <h2>Self Timer</h2>
+        <p class="muted">A countdown for you. Fires on this device only — nobody else is notified.</p>
+
+        <div class="preset-row" data-target="self">
+          <button class="chip" data-minutes="5">5m</button>
+          <button class="chip" data-minutes="15">15m</button>
+          <button class="chip" data-minutes="30">30m</button>
+          <button class="chip" data-minutes="60">1h</button>
+        </div>
+
+        <div class="row">
+          <input id="self-minutes" type="number" min="1" max="1440" step="1" placeholder="Minutes" inputmode="numeric" />
+          <input id="self-label" type="text" placeholder="Check in" maxlength="80" />
+        </div>
+        <button id="self-start" class="btn-primary">Start self timer</button>
+
+        <div id="self-active" class="pending" hidden>
+          <div>
+            <strong id="self-active-label"></strong>
+            <span id="self-active-countdown" class="countdown"></span>
+          </div>
+          <button id="self-cancel" class="btn-secondary">Cancel</button>
+        </div>
+        <p class="hint">
+          Keep Signal Ping open or in the background for this to fire on time. If your phone closes the
+          app entirely, you'll get the reminder the next time you open it.
+        </p>
+      </section>
+
+      <!-- FEATURE 3 — Partner Timer Alert (server-scheduled push) -->
+      <section class="card feature">
+        <h2>Partner Timer</h2>
+        <p class="muted">
+          A countdown you set for them. When it's up, the server pushes the alert — you don't need to
+          keep the app open.
+        </p>
+
+        <div class="preset-row" data-target="partner">
+          <button class="chip" data-minutes="5">5m</button>
+          <button class="chip" data-minutes="15">15m</button>
+          <button class="chip" data-minutes="30">30m</button>
+          <button class="chip" data-minutes="60">1h</button>
+        </div>
+
+        <div class="row">
+          <input id="partner-minutes" type="number" min="1" max="10080" step="1" placeholder="Minutes" inputmode="numeric" />
+          <input id="partner-label" type="text" placeholder="Ping me when this is up" maxlength="80" />
+        </div>
+        <button id="partner-start" class="btn-primary">Schedule partner alert</button>
+
+        <ul id="partner-pending" class="pending-list"></ul>
+      </section>
+
+      <!-- Alert log — the only history this app keeps -->
+      <section class="card">
+        <div class="row space-between">
+          <h2>Recent alerts</h2>
+          <button id="refresh-log" class="btn-secondary">Refresh</button>
+        </div>
+        <ul id="alert-log" class="log-list"></ul>
+      </section>
+    </main>
+
+    <!-- ========================= Settings ========================= -->
+    <main id="view-settings" class="view" hidden>
+      <header class="app-header">
+        <h1>Settings</h1>
+        <button id="close-settings" class="icon-btn" aria-label="Back">Done</button>
+      </header>
+
+      <section class="card">
+        <h2>Notifications</h2>
+        <p id="push-state" class="muted"></p>
+        <button id="enable-push" class="btn-primary">Enable notifications on this device</button>
+        <button id="test-push" class="btn-secondary">Send test notification</button>
+        <button id="disable-push" class="btn-secondary">Stop notifications on this device</button>
+        <ul id="device-list" class="log-list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Labels</h2>
+        <p class="muted">The text that shows up in the notification.</p>
+        <label for="set-name">Your name</label>
+        <input id="set-name" type="text" maxlength="40" />
+        <label for="set-live">Live Alert label</label>
+        <input id="set-live" type="text" maxlength="80" />
+        <label for="set-partner">Partner Timer label</label>
+        <input id="set-partner" type="text" maxlength="80" />
+        <label for="set-self">Self Timer label</label>
+        <input id="set-self" type="text" maxlength="80" />
+        <button id="save-settings" class="btn-primary">Save labels</button>
+      </section>
+
+      <section class="card">
+        <h2>Pairing</h2>
+        <p id="pair-state" class="muted"></p>
+        <label for="show-token">Access token for this account</label>
+        <div class="row">
+          <input id="show-token" type="password" readonly />
+          <button id="reveal-token" class="btn-secondary">Show</button>
+          <button id="copy-token" class="btn-secondary">Copy</button>
+        </div>
+        <p class="hint">
+          Treat this like a password. Paste it into "Add another device" on a second phone to use the
+          same account there.
+        </p>
+        <label for="set-api">Server URL</label>
+        <input id="set-api" type="url" spellcheck="false" />
+        <button id="save-api" class="btn-secondary">Save server URL</button>
+        <button id="sign-out" class="btn-danger">Sign out of this device</button>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

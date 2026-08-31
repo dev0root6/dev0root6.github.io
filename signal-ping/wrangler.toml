@@ -1,0 +1,54 @@
+# Signal Ping — Cloudflare Worker configuration.
+#
+# Before the first deploy:
+#   1. wrangler d1 create signal_ping        -> paste the id below
+#   2. wrangler d1 migrations apply signal_ping --remote
+#   3. npm run vapid                          -> generates the key pair
+#   4. wrangler secret put VAPID_PRIVATE_KEY  (paste the private key)
+#      wrangler secret put VAPID_PUBLIC_KEY   (paste the public key)
+# See README.md for the full walkthrough.
+
+name = "signal-ping"
+main = "worker/src/index.js"
+compatibility_date = "2025-01-15"
+
+# Serves the PWA shell (public/) from the same origin as the API, so the app
+# works with no extra hosting and no CORS. Deploying the frontend elsewhere
+# (e.g. GitHub Pages) also works — see ALLOWED_ORIGINS below.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "signal_ping"
+database_id = "PASTE_YOUR_D1_DATABASE_ID_HERE"
+
+# The whole scheduling story: once a minute, sweep D1 for partner alerts whose
+# countdown has elapsed and push them. No long-lived timers anywhere.
+[triggers]
+crons = ["* * * * *"]
+
+[vars]
+# Contact address the push services can use if something goes wrong with our
+# VAPID key. Must be a mailto: or https: URL.
+VAPID_SUBJECT = "mailto:you@example.com"
+
+# Comma-separated origins allowed to call the API from a browser. Leave as "*"
+# when the Worker also serves the PWA; set it explicitly if you host the
+# frontend somewhere else, e.g. "https://yourname.github.io".
+ALLOWED_ORIGINS = "*"
+
+# Android app verification. Set these after building the APK so Chrome opens it
+# full screen (no URL bar) instead of as a plain Custom Tab:
+#   ANDROID_PACKAGE_NAME    the applicationId from android/app/build.gradle
+#   ANDROID_CERT_FINGERPRINTS  SHA-256 fingerprint(s) of the signing cert,
+#                              comma-separated. Get them with: npm run assetlinks
+# Leaving them empty is safe — the app still works, just with a visible URL bar.
+ANDROID_PACKAGE_NAME = "io.github.dev0root6.signalping"
+ANDROID_CERT_FINGERPRINTS = ""
+
+# VAPID_PUBLIC_KEY and VAPID_PRIVATE_KEY are set as secrets, not vars:
+#   wrangler secret put VAPID_PUBLIC_KEY
+#   wrangler secret put VAPID_PRIVATE_KEY
+# For local dev, put them in .dev.vars (git-ignored).

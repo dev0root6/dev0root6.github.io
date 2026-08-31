@@ -1,0 +1,69 @@
+plugins {
+    id 'com.android.application'
+}
+
+// The host the TWA opens and verifies against. Passed in from gradle.properties
+// or -PsignalPingHost=... on the command line.
+def twaHost = project.findProperty('signalPingHost') ?: 'signal-ping.example.workers.dev'
+
+android {
+    namespace 'io.github.dev0root6.signalping'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'io.github.dev0root6.signalping'
+        minSdk 24          // Chrome's TWA support starts here
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0'
+
+        // Injected into AndroidManifest.xml and strings via manifest placeholders.
+        manifestPlaceholders = [
+            twaHost: twaHost,
+            launchUrl: "https://${twaHost}/",
+        ]
+        resValue 'string', 'twa_host', twaHost
+        resValue 'string', 'launch_url', "https://${twaHost}/"
+    }
+
+    signingConfigs {
+        // Release signing comes from environment variables so no keystore or
+        // password is ever committed. See README → "Building the APK".
+        release {
+            def storePath = System.getenv('SIGNAL_PING_KEYSTORE')
+            if (storePath) {
+                storeFile file(storePath)
+                storePassword System.getenv('SIGNAL_PING_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('SIGNAL_PING_KEY_ALIAS') ?: 'signalping'
+                keyPassword System.getenv('SIGNAL_PING_KEY_PASSWORD')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            // A TWA is a shell: there is no app code worth shrinking, and
+            // minification only risks breaking the androidx.browser plumbing.
+            minifyEnabled false
+            signingConfig System.getenv('SIGNAL_PING_KEYSTORE') ? signingConfigs.release : null
+        }
+        debug {
+            // Installable side by side with a release build while testing.
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    // TrustedWebActivity support: LauncherActivity, the delegation service that
+    // lets web push notifications appear as this app, and digital asset link
+    // verification.
+    implementation 'androidx.browser:browser:1.8.0'
+    implementation 'androidx.core:core:1.13.1'
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Matches the PWA's dark surface so launch has no colour flash. -->
+    <color name="background">#101214</color>
+    <color name="accent">#5B8CFF</color>
+</resources>

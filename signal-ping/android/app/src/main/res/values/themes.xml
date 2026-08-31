@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.SignalPing" parent="android:Theme.DeviceDefault.DayNight" />
+
+    <!-- Shown for the fraction of a second before Chrome takes over. -->
+    <style name="Theme.SignalPing.Splash" parent="Theme.SignalPing">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

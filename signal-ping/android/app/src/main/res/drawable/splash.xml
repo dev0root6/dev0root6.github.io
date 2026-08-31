@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Flat background plus the app mark, centred. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/background" />
+    <item android:gravity="center">
+        <bitmap android:src="@mipmap/ic_launcher" android:gravity="center" />
+    </item>
+</layer-list>
