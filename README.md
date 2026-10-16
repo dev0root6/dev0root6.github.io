@@ -1,30 +1,42 @@
-<!-- ░▒▓ dev0root · README ▓▒░ -->
+<!-- ===================== dev0root // README ===================== -->
 
 <div align="center">
 
 <a href="https://dev0root6.github.io/">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=30&duration=2800&pause=900&color=00FF88&center=true&vCenter=true&width=720&height=90&lines=dev0root+%2F%2F+S+Deva+Kumar;cybersecurity+researcher+%26+pentester;IoT+hacking+%C2%B7+red+team+%C2%B7+devops;this+is+my+corner+of+the+internet.+welcome+in." alt="dev0root" />
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=30&duration=2800&pause=900&color=00FF88&center=true&vCenter=true&width=760&height=90&lines=dev0root+%2F%2F+S+Deva+Kumar;cybersecurity+researcher+%26+pentester;IoT+hacking+%C2%B7+red+team+%C2%B7+devops;this+is+my+corner+of+the+internet." alt="dev0root" />
 </a>
 
-<br/>
+<table>
+  <tr>
+    <td align="center"><a href="https://dev0root6.github.io/"><b>LIVE&nbsp;SITE</b></a></td>
+    <td align="center"><a href="https://dev0root6.github.io/Dev-resume.pdf"><b>RESUME</b></a></td>
+    <td align="center"><a href="https://dev0root.in"><b>DEV0ROOT.IN</b></a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/dev0root"><b>LINKEDIN</b></a></td>
+    <td align="center"><a href="https://github.com/dev0root6"><b>GITHUB</b></a></td>
+  </tr>
+</table>
 
-[![Live](https://img.shields.io/badge/live-dev0root6.github.io-00ff88?style=for-the-badge&labelColor=020504)](https://dev0root6.github.io/)
-[![Resume](https://img.shields.io/badge/resume-PDF-f59e0b?style=for-the-badge&labelColor=020504)](https://dev0root6.github.io/Dev-resume.pdf)
-[![Site](https://img.shields.io/badge/dev0root.in-38bdf8?style=for-the-badge&labelColor=020504)](https://dev0root.in)
-[![LinkedIn](https://img.shields.io/badge/linkedin-dev0root-0a66c2?style=for-the-badge&labelColor=020504)](https://www.linkedin.com/in/dev0root)
-
-![profile views](https://komarev.com/ghpvc/?username=dev0root6&style=for-the-badge&color=00ff88&label=VISITORS)
+<img src="https://komarev.com/ghpvc/?username=dev0root6&style=for-the-badge&color=00ff88&label=VISITORS" alt="visitors" />
 
 </div>
 
----
+<hr/>
 
-## 🖥️ `dev0root@kali` — interactive shell
+<!-- ===================== INTERACTIVE SHELL ===================== -->
 
-> **This README is a terminal. Click a command to run it.** 👇 Chain the last few and try to get root.
+<h2 align="center">dev0root@kali &mdash; interactive shell</h2>
+
+<div align="center">
+  <b>This README is a terminal.</b> Click a command to run it. Chain the last few to get root.
+</div>
+
+<br/>
+
+<table width="100%">
+<tr><td>
 
 <details>
-<summary><code>$ whoami</code></summary>
+<summary><kbd>&nbsp;$ whoami&nbsp;</kbd></summary>
 
 ```
 S Deva Kumar (dev0root) — pentester, SRE, club president
@@ -33,7 +45,7 @@ President · AIT Cyber Security Club  |  ex-SRE @ Xcelerator  |  Bengaluru, IN
 </details>
 
 <details>
-<summary><code>$ cat focus.txt</code></summary>
+<summary><kbd>&nbsp;$ cat focus.txt&nbsp;</kbd></summary>
 
 ```
 IoT Hacking · Vulnerability Analysis · Prompt Engineering
@@ -42,44 +54,31 @@ DevOps · Hardware Hacking · Red Team Ops
 </details>
 
 <details>
-<summary><code>$ ls -la ~/arsenal</code></summary>
+<summary><kbd>&nbsp;$ ls -la ~/arsenal&nbsp;</kbd></summary>
 
 ```
-drwxr-xr-x  python      automation · tooling · recon
-drwxr-xr-x  c / c++     embedded · arduino · microcontrollers
-drwxr-xr-x  iot-hacking BLE · ESP8266 · OLED · evil-twin
+drwxr-xr-x  python        automation · tooling · recon
+drwxr-xr-x  c / c++       embedded · arduino · microcontrollers
+drwxr-xr-x  iot-hacking   BLE · ESP8266 · OLED · evil-twin
 drwxr-xr-x  vuln-analysis web · api · hardware · responsible disclosure
-drwxr-xr-x  devops      docker · portainer · grafana · cloudflare
--rwx------  root.flag   [ permission denied ] 🔒
+drwxr-xr-x  devops        docker · portainer · grafana · cloudflare
+-rwx------  root.flag     [ permission denied ]
 ```
 </details>
 
 <details>
-<summary><code>$ nmap -sV dev0root.in</code></summary>
+<summary><kbd>&nbsp;$ nmap -sV dev0root.in&nbsp;</kbd></summary>
 
 ```
-PORT    STATE  SERVICE   VERSION
-80/tcp  open   http      portfolio (green-on-black, matrix rain)
-443/tcp open   https     resume · projects · contact
-22/tcp  filtered ssh     nice try 😏
+PORT     STATE     SERVICE   VERSION
+80/tcp   open      http      portfolio (green-on-black, matrix rain)
+443/tcp  open      https     resume · projects · contact
+22/tcp   filtered  ssh       nice try
 ```
 </details>
 
 <details>
-<summary><code>$ ./open_portfolio.sh</code></summary>
-
-```
-[+] spinning up canvas ....... ok
-[+] matrix rain ............... online █
-[+] custom cursor ............. engaged
-[+] redirecting → https://dev0root6.github.io/
-```
-</details>
-
-<br/>
-
-<details>
-<summary><code>$ sudo -l</code> &nbsp;<sub>— the escalation starts here</sub></summary>
+<summary><kbd>&nbsp;$ sudo -l&nbsp;</kbd> &nbsp;<sub>the escalation starts here</sub></summary>
 
 <br/>
 
@@ -88,10 +87,10 @@ User dev0root may run the following commands:
     (root) NOPASSWD: /usr/bin/cat /root/root.flag
 ```
 
-> Interesting. Keep going 👇
+Interesting. Keep going.
 
 <details>
-<summary><code>$ sudo cat /root/root.flag</code></summary>
+<summary><kbd>&nbsp;$ sudo cat /root/root.flag&nbsp;</kbd></summary>
 
 <br/>
 
@@ -99,150 +98,205 @@ User dev0root may run the following commands:
   ___  ___  ___ _____ ___ ___
  | _ \/ _ \/ _ \_   _| __|   \
  |   / (_) | (_) || | | _|| |) |
- |_|_\\___/ \___/ |_| |___|___/   access granted
+ |_|_\\___/ \___/ |_| |___|___/     access granted
 
 flag{you_actually_clicked_all_the_way_down_nice}
 ```
 
-**You found the easter egg.** 🏴‍☠️ If you read this far, you're exactly the kind of person
-I like building with — [say hi](https://dev0root.in) or [open an issue](https://github.com/dev0root6/dev0root6.github.io/issues).
+<b>You found the easter egg.</b> If you read this far, you're exactly the kind of person
+I like building with &mdash; <a href="https://dev0root.in">say hi</a> or
+<a href="https://github.com/dev0root6/dev0root6.github.io/issues">open an issue</a>.
 
 </details>
 </details>
 
----
+</td></tr>
+</table>
 
-## 🌐 What is this?
+<hr/>
 
-This repo is the source of my personal portfolio — a terminal-flavoured, matrix-rain, green-on-black site served straight from **GitHub Pages**.
+<!-- ===================== ABOUT THE REPO ===================== -->
 
-No frameworks. No build step. Just hand-written **HTML, CSS and vanilla JS**.
+<table>
+<tr>
+<td width="55%" valign="top">
 
-👉 **[dev0root6.github.io](https://dev0root6.github.io/)**
+<h3>What is this?</h3>
 
----
+This repo is the source of my personal portfolio &mdash; a terminal-flavoured,
+matrix-rain, green-on-black site served straight from <b>GitHub Pages</b>.
 
-## ⚙️ The Stack
+No frameworks. No build step. Just hand-written <b>HTML, CSS and vanilla JS</b>.
+
+<p>&rarr; <a href="https://dev0root6.github.io/"><b>dev0root6.github.io</b></a></p>
+
+</td>
+<td width="45%" valign="top">
+
+<h3>Build</h3>
+
+<table>
+  <tr><td><b>Markup</b></td><td>HTML5</td></tr>
+  <tr><td><b>Styling</b></td><td>CSS3 &mdash; custom props, <code>clip-path</code>, <code>:has()</code></td></tr>
+  <tr><td><b>Scripts</b></td><td>Vanilla JS + Canvas 2D</td></tr>
+  <tr><td><b>Fonts</b></td><td>JetBrains Mono · Syne · VT323</td></tr>
+  <tr><td><b>Forms</b></td><td>Google Apps Script</td></tr>
+  <tr><td><b>Hosting</b></td><td>GitHub Pages</td></tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<hr/>
+
+<!-- ===================== STACK ===================== -->
+
+<h3 align="center">The Stack</h3>
 
 <div align="center">
-
-[![My Skills](https://skillicons.dev/icons?i=html,css,js,python,c,cpp,ts,react,nodejs,docker,linux,bash,arduino,raspberrypi,cloudflare,vercel,postgres,git,github&theme=dark)](https://skillicons.dev)
-
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=html,css,js,python,c,cpp,ts,react,nodejs,docker,linux,bash,arduino,raspberrypi,cloudflare,vercel,postgres,git,github&theme=dark&perline=10" alt="stack" />
+  </a>
 </div>
 
----
+<hr/>
 
-<details open>
-<summary><b>✨ What's inside the site (click to collapse)</b></summary>
+<!-- ===================== SITE FEATURES ===================== -->
 
-<br/>
+<table>
+<tr>
+<td width="50%" valign="top">
 
-### 🖥️ Look & Feel
-- **Matrix Rain Background** – canvas-rendered falling glyphs behind every page.
-- **CRT Vibes** – scanline overlay + vignette for that old-monitor glow.
-- **Custom Cursor** – glowing green dot + trailing ring that reacts to links & buttons.
-- **Pixel Mouse Trail** – tiny pixels that fade and shrink wherever you move.
-- **Glitch Text** – hero name flickers; headings scramble their letters.
+<h3>Look &amp; Feel</h3>
 
-### 📟 Content
-- **Live Terminal Block** – `whoami`, `cat focus.txt` & friends as a fake shell session.
-- **Canvas Ticker Banner** – arithmetic-only text layout, zero DOM reflow (`@chenglou/pretext` style).
-- **Gallery Strip** – infinite auto-scroll, desaturated until you hover.
-- **Arsenal Grid** – skills as `[ LANG ]`, `[ HACK ]`, `[ SEC ]` cells with animated bars.
-- **Project Cards** – clipped-corner cards, a featured project + ASCII "status panel".
-- **Contact Form** – posts straight to a Google Apps Script endpoint, no backend to babysit.
+<ul>
+  <li><b>Matrix Rain</b> &mdash; canvas glyphs behind every page</li>
+  <li><b>CRT Vibes</b> &mdash; scanline overlay + vignette</li>
+  <li><b>Custom Cursor</b> &mdash; green dot + ring reacting to links</li>
+  <li><b>Pixel Mouse Trail</b> &mdash; pixels that fade and shrink</li>
+  <li><b>Glitch Text</b> &mdash; flickering hero, scrambling headings</li>
+</ul>
 
-</details>
+</td>
+<td width="50%" valign="top">
 
-<details>
-<summary><b>🎨 Palette &amp; tech (click to expand)</b></summary>
+<h3>Content</h3>
 
-<br/>
+<ul>
+  <li><b>Live Terminal Block</b> &mdash; fake shell session</li>
+  <li><b>Canvas Ticker</b> &mdash; arithmetic layout, zero DOM reflow</li>
+  <li><b>Gallery Strip</b> &mdash; infinite scroll, hover to colour</li>
+  <li><b>Arsenal Grid</b> &mdash; skill cells with animated bars</li>
+  <li><b>Contact Form</b> &mdash; posts to Google Apps Script</li>
+</ul>
 
-| Token | Hex | Used for |
-|-------|-----|----------|
-| `--bg` | `#020504` | background |
-| `--green` | `#00ff88` | accent / glow |
-| `--amber` | `#f59e0b` | highlights |
-| `--red` | `#ff4757` | disclosure cards |
-| `--blue` | `#38bdf8` | terminal output |
-
-| Layer | What's used |
-|-------|-------------|
-| Markup | HTML5 |
-| Styling | CSS3 (custom properties, `clip-path`, `:has()`, keyframes) |
-| Scripts | Vanilla JavaScript + Canvas 2D |
-| Fonts | JetBrains Mono · Syne · VT323 |
-| Forms | Google Apps Script |
-| Hosting | GitHub Pages |
-
-</details>
+</td>
+</tr>
+</table>
 
 <details>
-<summary><b>📂 Repo structure (click to expand)</b></summary>
+<summary><b>Repo structure</b> &mdash; expand</summary>
 
 <br/>
 
 ```
 dev0root6.github.io/
-├── index.html          # main single-page portfolio (hero, about, skills, projects, contact)
-├── about.html          # legacy pages ─┐
-├── skills.html         #               │ older multi-page version,
-├── projects.html       #               │ still reachable
-├── contact.html        #             ──┘
-├── Dev-resume.pdf      # resume
-├── CSS/style.css       # shared styles for the legacy pages
+├── index.html          main single-page portfolio
+├── about.html          legacy pages ─┐
+├── skills.html                       │ older multi-page version,
+├── projects.html                     │ still reachable
+├── contact.html                    ──┘
+├── Dev-resume.pdf      resume
+├── CSS/style.css       shared styles for the legacy pages
 ├── JAVASCRIPT/
-│   ├── matrix.js       # background canvas animation
-│   ├── mouse-trail.js  # pixel mouse trail
-│   ├── typhographic.js # random-letter scramble effect
-│   └── form-handler.js # contact form → Google Apps Script
-└── IMAGES/             # gallery shots + project thumbnails
+│   ├── matrix.js       background canvas animation
+│   ├── mouse-trail.js  pixel mouse trail
+│   ├── typhographic.js random-letter scramble effect
+│   └── form-handler.js contact form → Google Apps Script
+└── IMAGES/             gallery shots + project thumbnails
 ```
 
 </details>
 
 <details>
-<summary><b>🚀 Run it locally (click to expand)</b></summary>
+<summary><b>Run it locally</b> &mdash; expand</summary>
 
 <br/>
-
-It's a static site, so just about anything works:
 
 ```bash
 git clone https://github.com/dev0root6/dev0root6.github.io.git
 cd dev0root6.github.io
 
-# option 1 – just open it
-xdg-open index.html        # or double-click it
+# option 1 — just open it
+xdg-open index.html
 
-# option 2 – serve it (recommended, so fetch/forms behave)
+# option 2 — serve it (recommended, so fetch/forms behave)
 python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
-Push to `main` and GitHub Pages redeploys on its own. That's the whole pipeline. 🙂
+Push to <code>main</code> and GitHub Pages redeploys on its own.
 
 </details>
 
----
+<hr/>
 
-## 📌 Pinned Projects
+<!-- ===================== PINNED PROJECTS ===================== -->
 
-| Project | What it is | Stack |
-|---------|------------|-------|
-| [**Vertex-code-IDE**](https://github.com/dev0root6/Vertex-code-IDE) ⭐ | Next-gen IDE that transforms how developers learn and visualize code — AI tutoring, live call graph, multi-model AI | TypeScript · Gemini · OpenRouter · Ollama |
-| [**dev-dashboard**](https://github.com/dev0root6/dev-dashboard) | Centralized interface consolidating system health metrics, logs and dev tools into a single real-time view | HTML · JS |
-| [**baadhal**](https://github.com/dev0root6/baadhal) | Lightweight, self-contained observability agent for Ubuntu servers — disk tracking, kernel + Docker health, webhook alerting | Go |
-| [**Lab-Programs**](https://github.com/dev0root6/Lab-Programs) | Lab programs for the VTU 2022 Scheme — Computer Science & Data Science | Jupyter Notebook |
-| [**SMART-HOME-FOR-PwD**](https://github.com/dev0root6/SMART-HOME-FOR-PwD) | Smart home built for people with disabilities on ESP8266 — relay + LED control via Blynk IoT | C++ · IoT |
-| [**keycoms**](https://github.com/dev0root6/keycoms) | Keyboard-driven comms tooling | Python |
+<h3 align="center">Pinned Projects</h3>
 
-<sub>…and a bunch more hardware/security experiments over at **[@dev0root6](https://github.com/dev0root6?tab=repositories)** — BLE spammers, WiFi deauthers, HID attacks, SQL VCS and friends.</sub>
+<table>
+  <tr>
+    <td valign="top" width="33%">
+      <h4><a href="https://github.com/dev0root6/Vertex-code-IDE">Vertex-code-IDE</a></h4>
+      Next-gen IDE that transforms how developers learn and visualize code &mdash;
+      AI tutoring, live call graph, multi-model AI.
+      <br/><br/><sub><code>TypeScript</code> <code>Gemini</code> <code>Ollama</code></sub>
+    </td>
+    <td valign="top" width="33%">
+      <h4><a href="https://github.com/dev0root6/dev-dashboard">dev-dashboard</a></h4>
+      Centralized interface consolidating system health metrics, logs and dev
+      tools into a single real-time view.
+      <br/><br/><sub><code>HTML</code> <code>JS</code></sub>
+    </td>
+    <td valign="top" width="33%">
+      <h4><a href="https://github.com/dev0root6/baadhal">baadhal</a></h4>
+      Lightweight observability agent for Ubuntu servers &mdash; disk, kernel +
+      Docker health, webhook alerting.
+      <br/><br/><sub><code>Go</code></sub>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" width="33%">
+      <h4><a href="https://github.com/dev0root6/Lab-Programs">Lab-Programs</a></h4>
+      Lab programs for the VTU 2022 Scheme &mdash; Computer Science &amp; Data Science.
+      <br/><br/><sub><code>Jupyter</code></sub>
+    </td>
+    <td valign="top" width="33%">
+      <h4><a href="https://github.com/dev0root6/SMART-HOME-FOR-PwD">SMART-HOME-FOR-PwD</a></h4>
+      Smart home for people with disabilities on ESP8266 &mdash; relay + LED
+      control via Blynk IoT.
+      <br/><br/><sub><code>C++</code> <code>IoT</code></sub>
+    </td>
+    <td valign="top" width="33%">
+      <h4><a href="https://github.com/dev0root6/keycoms">keycoms</a></h4>
+      Keyboard-driven comms tooling.
+      <br/><br/><sub><code>Python</code></sub>
+    </td>
+  </tr>
+</table>
 
----
+<div align="center">
+  <sub>More hardware/security experiments &mdash; BLE spammers, WiFi deauthers, HID attacks, SQL VCS &mdash;
+  at <a href="https://github.com/dev0root6?tab=repositories">@dev0root6</a>.</sub>
+</div>
 
-## 📊 GitHub, Live
+<hr/>
+
+<!-- ===================== STATS ===================== -->
+
+<h3 align="center">GitHub, Live</h3>
 
 <div align="center">
 
@@ -253,29 +307,29 @@ Push to `main` and GitHub Pages redeploys on its own. That's the whole pipeline.
 
 <img src="https://github-profile-trophy.vercel.app/?username=dev0root6&theme=matrix&no-frame=true&no-bg=true&column=7&margin-w=8" alt="trophies" />
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=dev0root6&bg_color=020504&color=00ff88&line=00ff88&point=f59e0b&area=true&hide_border=true" alt="activity graph" width="98%" />
+<img width="98%" src="https://github-readme-activity-graph.vercel.app/graph?username=dev0root6&bg_color=020504&color=00ff88&line=00ff88&point=f59e0b&area=true&hide_border=true" alt="activity graph" />
 
 </div>
 
----
+<hr/>
 
-## 📫 Reach Me
-
-<div align="center">
-
-[![Website](https://img.shields.io/badge/dev0root.in-00ff88?style=for-the-badge&logo=firefox&logoColor=020504&labelColor=020504)](https://dev0root.in)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0a66c2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=020504)](https://www.linkedin.com/in/dev0root)
-[![GitHub](https://img.shields.io/badge/GitHub-dev0root6-181717?style=for-the-badge&logo=github&logoColor=white&labelColor=020504)](https://github.com/dev0root6)
-[![Instagram](https://img.shields.io/badge/Instagram-%40127.4.7.8-e4405f?style=for-the-badge&logo=instagram&logoColor=white&labelColor=020504)](https://instagram.com/127.4.7.8)
-
-</div>
-
-> Open to security research collaborations, red team engagements, DevOps/SRE roles, and hardware hacking projects.
-
----
+<!-- ===================== CONTACT ===================== -->
 
 <div align="center">
 
-`dev0root` · built with too much caffeine and a soft spot for green-on-black 🧃
+<h3>Reach Me</h3>
+
+<a href="https://dev0root.in"><b>dev0root.in</b></a> &nbsp;&middot;&nbsp;
+<a href="https://www.linkedin.com/in/dev0root"><b>LinkedIn</b></a> &nbsp;&middot;&nbsp;
+<a href="https://github.com/dev0root6"><b>GitHub</b></a> &nbsp;&middot;&nbsp;
+<a href="https://instagram.com/127.4.7.8"><b>Instagram</b></a>
+
+<br/><br/>
+
+<i>Open to security research, red team engagements, DevOps/SRE roles, and hardware hacking projects.</i>
+
+<br/><br/>
+
+<sub><code>dev0root</code> &middot; built with too much caffeine and a soft spot for green-on-black</sub>
 
 </div>
