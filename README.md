@@ -125,18 +125,18 @@ Push to `main` and GitHub Pages redeploys on its own. That's the whole pipeline.
 
 ---
 
-## 🔥 Projects Featured on the Site
+## 📌 Pinned Projects
 
 | Project | What it is | Stack |
 |---------|------------|-------|
-| [**Vertex-code-IDE**](https://github.com/dev0root6/Vertex-code-IDE) ⭐ | VS Code extension — AI tutoring, live call graph, multi-model AI | TypeScript · Gemini · OpenRouter · Ollama |
-| [**TRACKER**](https://github.com/dev0root6/TRACKER) | Project management tool with real-time updates | React · Cloudflare Workers · Neon PG |
-| [**Cipher-Chat**](https://github.com/dev0root6/Cipher-Chat) | End-to-end encrypted MERN chat (ECDH + AES + PBKDF2) | MERN · Crypto |
-| [**BLE-Spammer**](https://github.com/dev0root6/BLE-Spammer) | BLE advertisement spammer on HM-10 + OLED | Arduino · C++ |
-| [**WiFi Deauther & Evil Twin**](https://github.com/dev0root6/EvilTwin-ESP8266) | ESP8266 deauth + evil-twin AP | ESP8266 · C++ |
-| [**SQL VCS**](https://github.com/dev0root6/Version-control-in-DB) | Git-style version control living inside SQLite | Python · SQLite |
-| [**HID Attack**](https://github.com/dev0root6/HID-Attack-ATmega328P-) | Bluetooth HID attack rig on ATmega328P | Arduino · C |
-| [**QuickBot**](https://github.com/dev0root6/QucikBot) | NLTK chatbot for search, site-cloning & dorking | Python · NLTK |
+| [**Vertex-code-IDE**](https://github.com/dev0root6/Vertex-code-IDE) ⭐ | Next-gen IDE that transforms how developers learn and visualize code — AI tutoring, live call graph, multi-model AI | TypeScript · Gemini · OpenRouter · Ollama |
+| [**dev-dashboard**](https://github.com/dev0root6/dev-dashboard) | Centralized interface consolidating system health metrics, logs and dev tools into a single real-time view | HTML · JS |
+| [**baadhal**](https://github.com/dev0root6/baadhal) | Lightweight, self-contained observability agent for Ubuntu servers — disk tracking, kernel + Docker health, webhook alerting | Go |
+| [**Lab-Programs**](https://github.com/dev0root6/Lab-Programs) | Lab programs for the VTU 2022 Scheme — Computer Science & Data Science | Jupyter Notebook |
+| [**SMART-HOME-FOR-PwD**](https://github.com/dev0root6/SMART-HOME-FOR-PwD) | Smart home built for people with disabilities on ESP8266 — relay + LED control via Blynk IoT | C++ · IoT |
+| [**keycoms**](https://github.com/dev0root6/keycoms) | Keyboard-driven comms tooling | Python |
+
+<sub>…and a bunch more hardware/security experiments over at **[@dev0root6](https://github.com/dev0root6?tab=repositories)** — BLE spammers, WiFi deauthers, HID attacks, SQL VCS and friends.</sub>
 
 ---
 
