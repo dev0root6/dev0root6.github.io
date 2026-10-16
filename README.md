@@ -19,17 +19,96 @@
 
 ---
 
-```console
-dev0root@kali:~$ whoami
-S Deva Kumar (dev0root) — pentester, SRE, club president
+## 🖥️ `dev0root@kali` — interactive shell
 
-dev0root@kali:~$ cat focus.txt
+> **This README is a terminal. Click a command to run it.** 👇 Chain the last few and try to get root.
+
+<details>
+<summary><code>$ whoami</code></summary>
+
+```
+S Deva Kumar (dev0root) — pentester, SRE, club president
+President · AIT Cyber Security Club  |  ex-SRE @ Xcelerator  |  Bengaluru, IN
+```
+</details>
+
+<details>
+<summary><code>$ cat focus.txt</code></summary>
+
+```
 IoT Hacking · Vulnerability Analysis · Prompt Engineering
 DevOps · Hardware Hacking · Red Team Ops
-
-dev0root@kali:~$ ./open_portfolio.sh
-[+] launching dev0root6.github.io ... matrix rain online █
 ```
+</details>
+
+<details>
+<summary><code>$ ls -la ~/arsenal</code></summary>
+
+```
+drwxr-xr-x  python      automation · tooling · recon
+drwxr-xr-x  c / c++     embedded · arduino · microcontrollers
+drwxr-xr-x  iot-hacking BLE · ESP8266 · OLED · evil-twin
+drwxr-xr-x  vuln-analysis web · api · hardware · responsible disclosure
+drwxr-xr-x  devops      docker · portainer · grafana · cloudflare
+-rwx------  root.flag   [ permission denied ] 🔒
+```
+</details>
+
+<details>
+<summary><code>$ nmap -sV dev0root.in</code></summary>
+
+```
+PORT    STATE  SERVICE   VERSION
+80/tcp  open   http      portfolio (green-on-black, matrix rain)
+443/tcp open   https     resume · projects · contact
+22/tcp  filtered ssh     nice try 😏
+```
+</details>
+
+<details>
+<summary><code>$ ./open_portfolio.sh</code></summary>
+
+```
+[+] spinning up canvas ....... ok
+[+] matrix rain ............... online █
+[+] custom cursor ............. engaged
+[+] redirecting → https://dev0root6.github.io/
+```
+</details>
+
+<br/>
+
+<details>
+<summary><code>$ sudo -l</code> &nbsp;<sub>— the escalation starts here</sub></summary>
+
+<br/>
+
+```
+User dev0root may run the following commands:
+    (root) NOPASSWD: /usr/bin/cat /root/root.flag
+```
+
+> Interesting. Keep going 👇
+
+<details>
+<summary><code>$ sudo cat /root/root.flag</code></summary>
+
+<br/>
+
+```
+  ___  ___  ___ _____ ___ ___
+ | _ \/ _ \/ _ \_   _| __|   \
+ |   / (_) | (_) || | | _|| |) |
+ |_|_\\___/ \___/ |_| |___|___/   access granted
+
+flag{you_actually_clicked_all_the_way_down_nice}
+```
+
+**You found the easter egg.** 🏴‍☠️ If you read this far, you're exactly the kind of person
+I like building with — [say hi](https://dev0root.in) or [open an issue](https://github.com/dev0root6/dev0root6.github.io/issues).
+
+</details>
+</details>
 
 ---
 
