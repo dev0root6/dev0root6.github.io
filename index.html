@@ -46,7 +46,9 @@ section p + p{margin-top:14px}
 .item p{margin-top:2px;color:var(--muted);font-size:14px}
 
 .skills{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px 24px}
-.skills li span{display:block;color:var(--muted);font-size:13.5px}
+.skills .desc{display:block;color:var(--muted);font-size:13.5px}
+#squares{position:fixed;inset:0;z-index:-1;pointer-events:none;display:none}
+@media (min-width:1100px){#squares{display:block}}
 
 .photos{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .photos img{width:100%;aspect-ratio:1;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05) brightness(.85);transition:filter .4s,transform .4s}
@@ -147,10 +149,10 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
 <section id="skills">
   <h2>Skills</h2>
   <ul class="skills">
-    <li>Offensive<span>Vulnerability analysis, Android security, IoT/hardware security, phishing simulation, code auditing</span></li>
-    <li>Defensive<span>Wazuh, SIEM triage, Linux hardening, network troubleshooting</span></li>
-    <li>Languages<span>Python, C, C++, SQL, JavaScript</span></li>
-    <li>Platforms &amp; Tools<span>Linux, Windows, Git, Docker, FastAPI, Flask, Cloudflare Workers, PostgreSQL/Neon, SQLite, Tailscale, ADB, Arduino, ESP8266/ESP32</span></li>
+    <li>Offensive<span class="desc">Vulnerability analysis, Android security, IoT/hardware security, phishing simulation, code auditing</span></li>
+    <li>Defensive<span class="desc">Wazuh, SIEM triage, Linux hardening, network troubleshooting</span></li>
+    <li>Languages<span class="desc">Python, C, C++, SQL, JavaScript</span></li>
+    <li>Platforms &amp; Tools<span class="desc">Linux, Windows, Git, Docker, FastAPI, Flask, Cloudflare Workers, PostgreSQL/Neon, SQLite, Tailscale, ADB, Arduino, ESP8266/ESP32</span></li>
   </ul>
 </section>
 
@@ -247,6 +249,8 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
 <footer>© S Deva Kumar · Bengaluru, IN</footer>
 
 </div>
+<canvas id="squares" aria-hidden="true"></canvas>
+<script src="JAVASCRIPT/squares.js"></script>
 <script src="JAVASCRIPT/pointer.js"></script>
 </body>
 </html>
