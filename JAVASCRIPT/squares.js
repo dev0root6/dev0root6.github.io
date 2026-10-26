@@ -1,14 +1,13 @@
-// Squares in the empty space beside the content that pop up in 3D and sink
-// back down, at random and near the pointer. Wide screens only (canvas hidden by CSS below 1100px).
+// Page background of square tiles that pop up in 3D and sink back down, at random
+// and near the pointer. Also moves the glass panel's sheen to follow the pointer.
 (function () {
   const canvas = document.getElementById('squares');
   const content = document.querySelector('.wrap');
   if (!canvas || !content) return;
   const ctx = canvas.getContext('2d');
-  const wide = matchMedia('(min-width: 1100px)');
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const CELL = 34, SIZE = 28, GAP = 40; // grid spacing, square size, clearance from content
+  const CELL = 34, SIZE = 28;           // grid spacing, square size
   const HEIGHT = 12;                     // how far a square rises at full lift
   const POP = 1100;                      // ms for one rise-and-fall
   let cells = [], w = 0, h = 0, mx = -1e4, my = -1e4;
@@ -19,12 +18,9 @@
     canvas.width = w * dpr; canvas.height = h * dpr;
     canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const r = content.getBoundingClientRect();
-    const left = r.left + 20 - GAP, right = r.right - 20 + GAP; // .wrap has 20px padding
     cells = [];
     for (let y = CELL / 2; y < h; y += CELL) {
       for (let x = CELL / 2; x < w; x += CELL) {
-        if (x + SIZE / 2 > left && x - SIZE / 2 < right) continue;
         cells.push({ x, y, start: -1e9, hover: 0, lift: 0 });
       }
     }
@@ -76,20 +72,23 @@
 
   let last = 0;
   function frame(now) {
-    if (wide.matches) {
-      if (now - last > 110 && cells.length) { // pop a few random squares
-        last = now;
-        for (let i = 0; i < 3; i++) {
-          const c = cells[Math.floor(Math.random() * cells.length)];
-          if (now - c.start > POP) c.start = now;
-        }
+    if (now - last > 90 && cells.length) { // pop a few random squares
+      last = now;
+      for (let i = 0; i < 4; i++) {
+        const c = cells[Math.floor(Math.random() * cells.length)];
+        if (now - c.start > POP) c.start = now;
       }
-      draw(now);
     }
+    draw(now);
     requestAnimationFrame(frame);
   }
 
-  addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    const r = content.getBoundingClientRect();
+    content.style.setProperty('--gx', (mx - r.left) + 'px');
+    content.style.setProperty('--gy', (my - r.top) + 'px');
+  });
   document.addEventListener('mouseleave', () => { mx = my = -1e4; });
   let t;
   addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { build(); draw(performance.now()); }, 150); });
