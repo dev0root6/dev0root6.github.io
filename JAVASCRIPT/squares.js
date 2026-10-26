@@ -8,8 +8,8 @@
   const wide = matchMedia('(min-width: 1100px)');
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const CELL = 34, SIZE = 10, GAP = 48; // grid spacing, square size, clearance from content
-  const HEIGHT = 9;                      // how far a square rises at full lift
+  const CELL = 34, SIZE = 28, GAP = 40; // grid spacing, square size, clearance from content
+  const HEIGHT = 12;                     // how far a square rises at full lift
   const POP = 1100;                      // ms for one rise-and-fall
   let cells = [], w = 0, h = 0, mx = -1e4, my = -1e4;
 
@@ -24,8 +24,7 @@
     cells = [];
     for (let y = CELL / 2; y < h; y += CELL) {
       for (let x = CELL / 2; x < w; x += CELL) {
-        if (x > left && x < right) continue;
-        if (Math.random() > 0.45) continue; // sparse, uneven field
+        if (x + SIZE / 2 > left && x - SIZE / 2 < right) continue;
         cells.push({ x, y, start: -1e9, hover: 0, lift: 0 });
       }
     }
@@ -54,7 +53,7 @@
     const lift = c.lift, s = SIZE;
     const bx = c.x - s / 2, by = c.y - s / 2;
     const tx = bx - lift * HEIGHT * 0.6, ty = by - lift * HEIGHT;
-    const top = 0.1 + lift * 0.8;
+    const top = 0.06 + lift * 0.8;
     if (lift > 0.02) {
       quad([[bx + s, by], [bx + s, by + s], [tx + s, ty + s], [tx + s, ty]], top * 0.45);
       quad([[bx, by + s], [bx + s, by + s], [tx + s, ty + s], [tx, ty + s]], top * 0.25);
@@ -64,20 +63,23 @@
 
   function draw(now) {
     ctx.clearRect(0, 0, w, h);
+    const raised = [];
     cells.forEach(c => {
-      const near = Math.max(0, 1 - Math.hypot(c.x - mx, c.y - my) / 120);
+      const near = Math.max(0, 1 - Math.hypot(c.x - mx, c.y - my) / 130);
       c.hover += (near - c.hover) * 0.12;
       c.lift = Math.max(popCurve((now - c.start) / POP), c.hover);
-      square(c);
+      if (c.lift > 0.02) raised.push(c); else square(c);
     });
+    // Raised squares last, lowest first, so neighbours never cover their sides
+    raised.sort((a, b) => a.lift - b.lift).forEach(square);
   }
 
   let last = 0;
   function frame(now) {
     if (wide.matches) {
-      if (now - last > 110 && cells.length) { // pop a couple of random squares
+      if (now - last > 110 && cells.length) { // pop a few random squares
         last = now;
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 3; i++) {
           const c = cells[Math.floor(Math.random() * cells.length)];
           if (now - c.start > POP) c.start = now;
         }
