@@ -1,5 +1,5 @@
-// Small isometric cubes in the empty space beside the content that blink at random
-// and light up near the pointer. Wide screens only (canvas hidden by CSS below 1100px).
+// Squares in the empty space beside the content that pop up in 3D and sink
+// back down, at random and near the pointer. Wide screens only (canvas hidden by CSS below 1100px).
 (function () {
   const canvas = document.getElementById('squares');
   const content = document.querySelector('.wrap');
@@ -8,8 +8,9 @@
   const wide = matchMedia('(min-width: 1100px)');
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const CELL = 36, SIZE = 7, GAP = 48; // grid spacing, cube edge, clearance from content
-  const K = Math.sqrt(3) / 2;
+  const CELL = 34, SIZE = 10, GAP = 48; // grid spacing, square size, clearance from content
+  const HEIGHT = 9;                      // how far a square rises at full lift
+  const POP = 1100;                      // ms for one rise-and-fall
   let cells = [], w = 0, h = 0, mx = -1e4, my = -1e4;
 
   function build() {
@@ -25,44 +26,63 @@
       for (let x = CELL / 2; x < w; x += CELL) {
         if (x > left && x < right) continue;
         if (Math.random() > 0.45) continue; // sparse, uneven field
-        cells.push({ x, y, glow: Math.random() * 0.3 });
+        cells.push({ x, y, start: -1e9, hover: 0, lift: 0 });
       }
     }
   }
 
-  function face(points, alpha) {
+  // Rise quickly, hold briefly, settle back down
+  function popCurve(p) {
+    if (p <= 0 || p >= 1) return 0;
+    if (p < 0.25) return 1 - Math.pow(1 - p / 0.25, 3);
+    if (p < 0.4) return 1;
+    const q = (p - 0.4) / 0.6;
+    return 1 - q * q * (3 - 2 * q);
+  }
+
+  function quad(points, alpha) {
     ctx.fillStyle = 'rgba(255,255,255,' + alpha.toFixed(3) + ')';
     ctx.beginPath();
     points.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]));
     ctx.closePath();
     ctx.fill();
   }
-  // Top, left and right faces shaded light to dark so the cube reads as 3D
-  function cube(x, y, a) {
-    const s = SIZE, d = s * K;
-    face([[x, y - s], [x + d, y - s / 2], [x, y], [x - d, y - s / 2]], a);
-    face([[x - d, y - s / 2], [x, y], [x, y + s], [x - d, y + s / 2]], a * 0.55);
-    face([[x, y], [x + d, y - s / 2], [x + d, y + s / 2], [x, y + s]], a * 0.28);
+
+  // A square seen from above; when lifted, its top moves up-left and the
+  // right and bottom sides show, so it reads as a block rising off the page.
+  function square(c) {
+    const lift = c.lift, s = SIZE;
+    const bx = c.x - s / 2, by = c.y - s / 2;
+    const tx = bx - lift * HEIGHT * 0.6, ty = by - lift * HEIGHT;
+    const top = 0.1 + lift * 0.8;
+    if (lift > 0.02) {
+      quad([[bx + s, by], [bx + s, by + s], [tx + s, ty + s], [tx + s, ty]], top * 0.45);
+      quad([[bx, by + s], [bx + s, by + s], [tx + s, ty + s], [tx, ty + s]], top * 0.25);
+    }
+    quad([[tx, ty], [tx + s, ty], [tx + s, ty + s], [tx, ty + s]], top);
   }
 
-  function draw() {
+  function draw(now) {
     ctx.clearRect(0, 0, w, h);
     cells.forEach(c => {
-      const near = Math.max(0, 1 - Math.hypot(c.x - mx, c.y - my) / 110);
-      const a = 0.12 + Math.max(c.glow, near) * 0.85;
-      cube(c.x, c.y, a);
+      const near = Math.max(0, 1 - Math.hypot(c.x - mx, c.y - my) / 120);
+      c.hover += (near - c.hover) * 0.12;
+      c.lift = Math.max(popCurve((now - c.start) / POP), c.hover);
+      square(c);
     });
   }
 
   let last = 0;
-  function frame(t) {
+  function frame(now) {
     if (wide.matches) {
-      if (t - last > 90) { // light a few random cubes
-        last = t;
-        for (let i = 0; i < 3 && cells.length; i++) cells[Math.floor(Math.random() * cells.length)].glow = 1;
+      if (now - last > 110 && cells.length) { // pop a couple of random squares
+        last = now;
+        for (let i = 0; i < 2; i++) {
+          const c = cells[Math.floor(Math.random() * cells.length)];
+          if (now - c.start > POP) c.start = now;
+        }
       }
-      cells.forEach(c => { c.glow *= 0.94; });
-      draw();
+      draw(now);
     }
     requestAnimationFrame(frame);
   }
@@ -70,7 +90,7 @@
   addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
   document.addEventListener('mouseleave', () => { mx = my = -1e4; });
   let t;
-  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { build(); draw(); }, 150); });
+  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { build(); draw(performance.now()); }, 150); });
   build();
-  if (still) draw(); else requestAnimationFrame(frame);
+  if (still) draw(0); else requestAnimationFrame(frame);
 })();
