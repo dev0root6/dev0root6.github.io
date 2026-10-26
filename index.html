@@ -7,13 +7,10 @@
 <meta name="description" content="S Deva Kumar (dev0root): cybersecurity researcher and pentester based in Bengaluru.">
 <style>
 :root{
-  --bg:#ffffff;--text:#1a1a1a;--muted:#6b6b6b;--border:#e5e5e5;--link:#1a1a1a;
-}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#111111;--text:#e8e8e8;--muted:#9a9a9a;--border:#2a2a2a;--link:#e8e8e8}
+  --bg:#0e0e0e;--text:#e6e6e6;--muted:#8f8f8f;--border:#262626;--link:#e6e6e6;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;color-scheme:dark}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.65}
 a{color:var(--link);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--border)}
 a:hover{text-decoration-color:currentColor}
@@ -55,6 +52,7 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
   <a href="#" class="name">dev0root</a>
   <ul>
     <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -64,20 +62,33 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
 
 <header>
   <h1>S Deva Kumar</h1>
-  <div class="sub">Cybersecurity researcher &amp; pentester · Bengaluru, IN</div>
-  <p class="intro">President of the AIT Cyber Security Club. I work on offensive security, IoT hacking, and infrastructure engineering. I independently discovered a significant vulnerability in META AI's WhatsApp integration.</p>
+  <div class="sub">Red Team / Offensive Security · Mobile &amp; IoT Security Researcher · Bengaluru, India</div>
+  <p class="intro">Offensive security researcher and penetration tester. I research Android credential exposure, disclose vulnerabilities through coordinated programs, audit applications, and design adversary-simulation exercises.</p>
   <div class="links">
     <a href="Dev-resume.pdf" target="_blank" rel="noopener">Resume</a>
+    <a href="mailto:devakumar.network@gmail.com">Email</a>
     <a href="https://github.com/dev0root6" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://huggingface.co/dev0root6" target="_blank" rel="noopener">HuggingFace</a>
     <a href="https://www.linkedin.com/in/dev0root" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </header>
 
 <section id="about">
   <h2>About</h2>
-  <p>Cybersecurity researcher and AI enthusiast based in Bengaluru. I completed an SRE internship at Xcelerator and build tools across DevOps, offensive security, and infrastructure automation.</p>
-  <p>My work ranges from low-level hardware hacking with ESP8266 and Arduino to BLE exploitation, WiFi attacks, and vulnerability research against production systems. Currently building a Split-Personality OS on custom Debian and a Lain-inspired browser OS simulation.</p>
-  <p><strong>Disclosure, 2024:</strong> identified a significant security flaw in META AI's WhatsApp integration and reported it through responsible disclosure.</p>
+  <p>Offensive security researcher and penetration tester with hands-on experience in Android credential-exposure research, coordinated vulnerability disclosure, application security auditing, and adversary-simulation exercise design.</p>
+  <p>I combine red-team methodology with SRE and detection-engineering experience, and frame each finding in terms of both the attack path and the defensive gap.</p>
+</section>
+
+<section id="research">
+  <h2>Research &amp; Disclosure</h2>
+  <div class="item">
+    <div class="item-head"><span class="item-title">UPI PIN cleartext exposure via Android Accessibility</span><span class="item-meta">2026</span></div>
+    <p>NPCI common library (Google Pay, WhatsApp Pay). The PIN field was not marked as secure input, so the full UPI PIN reached active accessibility services despite FLAG_SECURE (CWE-522). Disclosed via Google Bug Hunters (priority raised P4 → P3) and to NPCI's Responsible Disclosure Program; Google moved PIN entry to biometric authentication.</p>
+  </div>
+  <div class="item">
+    <div class="item-head"><span class="item-title">Meta AI · WhatsApp integration</span></div>
+    <p>Independently identified a vulnerability in Meta AI's WhatsApp integration.</p>
+  </div>
 </section>
 
 <section id="experience">
@@ -87,11 +98,11 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
     <p>AI tutoring, live call graph, multi-model AI support.</p>
   </div>
   <div class="item">
-    <div class="item-head"><span class="item-title">President, Cyber Security Club · Atria Institute of Technology</span><span class="item-meta">Current</span></div>
-    <p>CTF design, labs, club leadership and research.</p>
+    <div class="item-head"><span class="item-title">President &amp; Student Mentor · AIT Cybersecurity Club (NetworkNinjas)</span><span class="item-meta">Current</span></div>
+    <p>Organiser of CTF, workshop and debugging events.</p>
   </div>
   <div class="item">
-    <div class="item-head"><span class="item-title">SRE Intern · Xcelerator</span><span class="item-meta">2024</span></div>
+    <div class="item-head"><span class="item-title">SRE Intern · Xcelerator</span><span class="item-meta">Oct 2025 – Apr 2026</span></div>
     <p>Site reliability engineering, system health, infrastructure automation.</p>
   </div>
   <div class="item">
@@ -103,20 +114,35 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
 <section id="skills">
   <h2>Skills</h2>
   <ul class="skills">
-    <li>Python<span>Automation, scripts, tooling</span></li>
-    <li>C / C++<span>Embedded systems, Arduino</span></li>
-    <li>IoT Hacking<span>BLE, ESP8266, Evil Twin</span></li>
-    <li>Vulnerability Analysis<span>Web, API, hardware</span></li>
-    <li>Linux Administration<span>Kali, Debian, hardening</span></li>
-    <li>DevOps / Infra<span>Docker, Grafana, Cloudflare</span></li>
-    <li>Full-Stack Web<span>React, Flask, Workers, Postgres</span></li>
-    <li>Prompt Engineering<span>LLM workflows, AI integration</span></li>
-    <li>Hardware Hacking<span>HID attacks, WiFi deauth</span></li>
+    <li>Offensive<span>Vulnerability analysis, Android security, IoT/hardware security, phishing simulation, code auditing</span></li>
+    <li>Defensive<span>Wazuh, SIEM triage, Linux hardening, network troubleshooting</span></li>
+    <li>Languages<span>Python, C, C++, SQL, JavaScript</span></li>
+    <li>Platforms &amp; Tools<span>Linux, Windows, Git, Docker, FastAPI, Flask, Cloudflare Workers, PostgreSQL/Neon, SQLite, Tailscale, ADB, Arduino, ESP8266/ESP32</span></li>
   </ul>
 </section>
 
 <section id="projects">
   <h2>Projects</h2>
+  <div class="item">
+    <div class="item-head"><a class="item-title" href="https://huggingface.co/dev0root6" target="_blank" rel="noopener">NeuralWatch</a><span class="item-meta">Wazuh · Llama-3.2-3B · FastAPI</span></div>
+    <p>Agentic alert-triage pipeline: Wazuh SIEM, a QLoRA fine-tuned Llama-3.2-3B published on HuggingFace, a FastAPI orchestrator and a Discord approve/deny loop.</p>
+  </div>
+  <div class="item">
+    <div class="item-head"><a class="item-title" href="https://github.com/dev0root6/baadhal" target="_blank" rel="noopener">Baadhal</a><span class="item-meta">Go</span></div>
+    <p>Monitoring agent for Linux servers: disk, kernel messages, Docker log errors and heartbeats, with Discord, Slack and webhook alerts.</p>
+  </div>
+  <div class="item">
+    <div class="item-head"><span class="item-title">Ghost in the Wire CTF</span><span class="item-meta">Vigyaanrang 2026</span></div>
+    <p>Designed and deployed an incident-response scenario with 10 flags on Cloudflare Workers and Neon DB, with a live leaderboard.</p>
+  </div>
+  <div class="item">
+    <div class="item-head"><span class="item-title">Safe Click</span><span class="item-meta">Security awareness</span></div>
+    <p>Phishing-awareness simulation covering malicious links, session hijacking and OTP phishing.</p>
+  </div>
+  <div class="item">
+    <div class="item-head"><span class="item-title">Homelab</span><span class="item-meta">Tailscale · Grafana</span></div>
+    <p>Tailscale-networked lab with Portainer, Grafana, Beszel, PiKVM and Cloudflare Workers heartbeat alerts.</p>
+  </div>
   <div class="item">
     <div class="item-head"><a class="item-title" href="https://github.com/dev0root6/Vertex-code-IDE" target="_blank" rel="noopener">Vertex-code-IDE</a><span class="item-meta">TypeScript · VS Code</span></div>
     <p>VS Code extension with AI tutoring, live call graph visualization, and multi-model support via Gemini, OpenRouter and Ollama.</p>
@@ -163,6 +189,7 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
   <h2>Contact</h2>
   <p>Open to security research collaborations, red team engagements, DevOps/SRE roles and hardware hacking projects.</p>
   <div class="links">
+    <a href="mailto:devakumar.network@gmail.com">devakumar.network@gmail.com</a>
     <a href="https://github.com/dev0root6" target="_blank" rel="noopener">GitHub</a>
     <a href="https://www.linkedin.com/in/dev0root" target="_blank" rel="noopener">LinkedIn</a>
     <a href="https://instagram.com/127.4.7.8" target="_blank" rel="noopener">Instagram</a>
