@@ -18,7 +18,14 @@ html{scroll-behavior:smooth;color-scheme:dark}
 body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:15px;line-height:1.7}
 a{color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-color:#444}
 a:hover{text-decoration-color:currentColor}
-.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+.wrap{position:relative;max-width:780px;margin:40px auto;padding:0 40px;border-radius:22px;
+  background:rgba(14,14,14,.58);border:1px solid rgba(255,255,255,.09);
+  -webkit-backdrop-filter:blur(16px) saturate(115%);backdrop-filter:blur(16px) saturate(115%);
+  box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1),inset 0 0 0 1px rgba(255,255,255,.02)}
+/* Liquid-glass sheen: a soft highlight that follows the pointer (position set by squares.js) */
+.wrap::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(420px circle at var(--gx,30%) var(--gy,0px),rgba(255,255,255,.07),transparent 60%),
+  linear-gradient(160deg,rgba(255,255,255,.06),transparent 35%)}
 
 nav{padding:28px 0;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px}
 nav .name{font-weight:600;text-decoration:none}
@@ -47,8 +54,7 @@ section p + p{margin-top:14px}
 
 .skills{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px 24px}
 .skills .desc{display:block;color:var(--muted);font-size:13.5px}
-#squares{position:fixed;inset:0;z-index:-1;pointer-events:none;display:none}
-@media (min-width:1100px){#squares{display:block}}
+#squares{position:fixed;inset:0;z-index:-1;pointer-events:none}
 
 .photos{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .photos img{width:100%;aspect-ratio:1;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05) brightness(.85);transition:filter .4s,transform .4s}
@@ -75,6 +81,7 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
 .wd{display:inline-block;white-space:nowrap}
 
 @media (max-width:600px){
+  .wrap{margin:12px;padding:0 18px;border-radius:16px}
   header{grid-template-columns:1fr}
   .portrait{width:80px;height:80px}
   h1{font-size:24px}
@@ -100,7 +107,7 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
 </nav>
 
 <header>
-  <img class="portrait" src="IMAGES/devanon.png" alt="Portrait of S Deva Kumar">
+  <img class="portrait" src="IMAGES/profile.jpg" alt="Portrait of S Deva Kumar">
   <div>
   <h1>S Deva Kumar</h1>
   <div class="sub">Red Team / Offensive Security · Mobile &amp; IoT Security Researcher · Bengaluru, India</div>
