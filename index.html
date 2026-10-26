@@ -54,6 +54,12 @@ section p + p{margin-top:14px}
 .photos img{width:100%;aspect-ratio:1;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05) brightness(.85);transition:filter .4s,transform .4s}
 .photos img:hover{filter:grayscale(1) contrast(1.15) brightness(1);transform:scale(1.02)}
 
+.resume-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.btn{display:inline-block;padding:10px 18px;border:1px solid var(--text);text-decoration:none;font-size:14px;transition:background .2s,color .2s}
+.btn:hover{background:var(--text);color:var(--bg)}
+.btn.ghost{border-color:#444;color:var(--muted)}
+.btn.ghost:hover{border-color:var(--text);background:transparent;color:var(--text)}
+
 footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 
 /* Custom pointer (enabled by pointer.js on mouse devices only) */
@@ -88,6 +94,7 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#photos">Photos</a></li>
+    <li><a href="#resume">Resume</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -231,6 +238,16 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
     <img src="IMAGES/dev2.jpeg" alt="Presenting a recursion talk" loading="lazy">
     <img src="IMAGES/dev6.jpeg" alt="Working on a laptop during an event" loading="lazy">
     <img src="IMAGES/dev8.jpeg" alt="Addressing students in a lab" loading="lazy">
+  </div>
+</section>
+
+<section id="resume">
+  <h2>Resume</h2>
+  <p>Full resume with research, projects, experience and skills.</p>
+  <p class="item-meta">PDF · 162 KB · updated Oct 2026</p>
+  <div class="resume-actions">
+    <a class="btn" href="Dev-resume.pdf" download="S-Deva-Kumar-Resume.pdf">Download resume ↓</a>
+    <a class="btn ghost" href="Dev-resume.pdf" target="_blank" rel="noopener">View in browser</a>
   </div>
 </section>
 
