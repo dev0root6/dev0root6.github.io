@@ -59,6 +59,14 @@ section p + p{margin-top:14px}
 .photos{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .photos img{width:100%;aspect-ratio:1;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05) brightness(.85);transition:filter .4s,transform .4s}
 .photos img:hover{filter:grayscale(1) contrast(1.15) brightness(1);transform:scale(1.02)}
+.talk{margin-bottom:34px}
+.talk-desc{margin-top:4px;color:var(--muted);font-size:14px}
+.talk:last-child{margin-bottom:0}
+.talk-imgs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}
+.talk-imgs a{display:block;overflow:hidden}
+.talk-imgs img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05) brightness(.85);transition:filter .4s,transform .4s}
+.talk-imgs img.poster{object-position:top}
+.talk-imgs a:hover img{filter:grayscale(1) contrast(1.15) brightness(1);transform:scale(1.03)}
 
 .resume-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
 .btn{display:inline-block;padding:10px 18px;border:1px solid var(--text);text-decoration:none;font-size:14px;transition:background .2s,color .2s}
@@ -97,6 +105,7 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#research">Research</a></li>
+    <li><a href="#talks">Talks</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -133,12 +142,36 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
   <h2>Research &amp; Disclosure</h2>
   <div class="item">
     <div class="item-head"><span class="item-title">Security Research · Responsible Disclosure (NPCI)</span><span class="item-meta">2026</span></div>
-    <p>Identified and responsibly disclosed a systemic UPI PIN-handling vulnerability in the NPCI Common Library affecting Android accessibility handling. Acknowledged and rewarded under NPCI's Security Research / Bug Bounty program (Report #19356, ₹20,000). Also reported to Google VRP (IssueTracker 564375302).</p>
+    <p>Identified and responsibly disclosed a vulnerability in the NPCI Common Library. Acknowledged and rewarded under NPCI's Security Research / Bug Bounty program (Report #19356, ₹20,000). Also reported to Google VRP (IssueTracker 564375302).</p>
     <p><a href="https://cyber.comolho.com/researcher/profile/dev0root6" target="_blank" rel="noopener">View researcher profile ↗</a></p>
   </div>
   <div class="item">
     <div class="item-head"><span class="item-title">Meta AI · WhatsApp integration</span></div>
     <p>Independently identified a vulnerability in Meta AI's WhatsApp integration.</p>
+  </div>
+</section>
+
+<section id="talks">
+  <h2>Talks &amp; Workshops</h2>
+
+  <div class="talk">
+    <div class="item-head"><span class="item-title">Cyber Safety &amp; Online Security · Rotaract</span><span class="item-meta">Aug 2026 · Online</span></div>
+    <p class="talk-desc">Invited speaker for a joint awareness session run by Rotaract clubs across four regions: Kathmandu Mid-Town (Nepal &amp; Bhutan), Bangalore High Grounds (India), Colombo Regent (Sri Lanka &amp; Maldives) and Debo (Ethiopia). I spoke about why everyday users need to stay vigilant online, walked through how scams such as investment fraud play out in each country with region-specific numbers, and shared simple habits to stay safe. 50+ participants.</p>
+    <div class="talk-imgs">
+      <a href="IMAGES/talks/rotaract-poster.jpg" target="_blank" rel="noopener"><img class="poster" src="IMAGES/talks/rotaract-poster.jpg" alt="Rotaract poster for the Cyber Safety and Online Security session" loading="lazy"></a>
+      <a href="IMAGES/talks/rotaract-session-1.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/rotaract-session-1.jpg" alt="Presenting a slide on country-specific investment scams" loading="lazy"></a>
+      <a href="IMAGES/talks/rotaract-session-2.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/rotaract-session-2.jpg" alt="Participants from the Rotaract clubs in the online session" loading="lazy"></a>
+    </div>
+  </div>
+
+  <div class="talk">
+    <div class="item-head"><span class="item-title">Mobile Credential Security: How Everyday Protections Fail · VELS University</span><span class="item-meta">Nov 2026 · Online</span></div>
+    <p class="talk-desc">Resource person for a webinar by the School of Computing Sciences, Department of Computer Science and Applied Computing, VISTAS (Chennai). I showed that Android's security model is strong, yet credentials still leak when users and developers don't understand features such as accessibility permissions. The session included a live, controlled demo on a test app showing what an app with accessibility access can observe, and how to protect against it.</p>
+    <div class="talk-imgs">
+      <a href="IMAGES/talks/vels-poster.jpg" target="_blank" rel="noopener"><img class="poster" src="IMAGES/talks/vels-poster.jpg" alt="VELS University webinar poster: Mobile Credential Security" loading="lazy"></a>
+      <a href="IMAGES/talks/vels-session.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/vels-session.jpg" alt="Presenting the Mobile Credential Security webinar" loading="lazy"></a>
+      <a href="IMAGES/talks/vels-demo.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/vels-demo.jpg" alt="Demo dashboard used in the session, running against a test app" loading="lazy"></a>
+    </div>
   </div>
 </section>
 
