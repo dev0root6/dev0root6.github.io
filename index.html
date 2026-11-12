@@ -74,6 +74,24 @@ section p + p{margin-top:14px}
 .btn.ghost{border-color:#444;color:var(--muted)}
 .btn.ghost:hover{border-color:var(--text);background:transparent;color:var(--text)}
 
+.org{display:grid;grid-template-columns:48px 1fr;gap:16px;margin-bottom:28px}
+.org:last-child{margin-bottom:0}
+.org-logo{width:48px;height:48px;border-radius:8px;border:1px solid #333;background:#161616;display:grid;place-items:center;font-weight:600;font-size:13px;letter-spacing:.02em;overflow:hidden}
+.org-logo img{width:100%;height:100%;object-fit:contain;filter:grayscale(1)}
+.org-logo.pad{padding:9px}
+.org-logo img.cover{object-fit:cover}
+.org-name{font-weight:600}
+.org-meta{color:var(--muted);font-size:12.5px}
+.roles{margin-top:14px}
+.role{position:relative;padding-left:24px;padding-bottom:18px}
+.role:last-child{padding-bottom:0}
+.role::before{content:"";position:absolute;left:3px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--text)}
+.role:not(:last-child)::after{content:"";position:absolute;left:7px;top:21px;bottom:2px;width:1px;background:#444}
+.role-title{font-weight:600;font-size:14.5px}
+.role-meta{color:var(--muted);font-size:12.5px}
+.role p{margin-top:2px;color:var(--muted);font-size:14px}
+.item.featured{border:1px solid #333;border-radius:10px;padding:14px 16px;background:rgba(255,255,255,.02)}
+
 footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 
 /* Custom pointer (enabled by pointer.js on mouse devices only) */
@@ -177,21 +195,38 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
 
 <section id="experience">
   <h2>Experience</h2>
-  <div class="item">
-    <div class="item-head"><span class="item-title">VS Code Extension Developer · Vertex-code-IDE</span><span class="item-meta">Feb 2026</span></div>
-    <p>AI tutoring, live call graph, multi-model AI support.</p>
+  <div class="org">
+    <div class="org-logo pad"><img src="IMAGES/logos/xcelerator.png" alt="Xcelerator logo"></div>
+    <div class="org-body">
+      <div class="org-name">Xcelerator</div>
+      <div class="org-meta">Oct 2025 – Present</div>
+      <div class="roles">
+        <div class="role">
+          <div class="role-title">Security Researcher &amp; Pentester</div>
+          <div class="role-meta">Nov 2026 – Present</div>
+          <p>Security research and penetration testing across mobile, web and infrastructure.</p>
+        </div>
+        <div class="role">
+          <div class="role-title">SRE Intern</div>
+          <div class="role-meta">Oct 2025 – Apr 2026 · 7 mos</div>
+          <p>Site reliability engineering, system health, infrastructure automation.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="item">
-    <div class="item-head"><span class="item-title">President &amp; Student Mentor · AIT Cybersecurity Club (NetworkNinjas)</span><span class="item-meta">Current</span></div>
-    <p>Organiser of CTF, workshop and debugging events.</p>
-  </div>
-  <div class="item">
-    <div class="item-head"><span class="item-title">SRE Intern · Xcelerator</span><span class="item-meta">Oct 2025 – Apr 2026</span></div>
-    <p>Site reliability engineering, system health, infrastructure automation.</p>
-  </div>
-  <div class="item">
-    <div class="item-head"><span class="item-title">Independent Security Researcher</span><span class="item-meta">Ongoing</span></div>
-    <p>IoT, BLE, web and hardware exploitation.</p>
+  <div class="org">
+    <div class="org-logo"><img class="cover" src="IMAGES/logos/ait-cybersec.jpg" alt="AIT Cybersecurity Club logo"></div>
+    <div class="org-body">
+      <div class="org-name">AIT Cybersecurity Club</div>
+      <div class="org-meta">Atria Institute of Technology, Bengaluru</div>
+      <div class="roles">
+        <div class="role">
+          <div class="role-title">President &amp; Student Mentor</div>
+          <div class="role-meta">Present</div>
+          <p>Organiser of CTF, workshop and debugging events.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -207,6 +242,10 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
 
 <section id="projects">
   <h2>Projects</h2>
+  <div class="item featured">
+    <div class="item-head"><a class="item-title" href="https://github.com/dev0root6/Vertex-code-IDE" target="_blank" rel="noopener">Vertex-code-IDE</a><span class="item-meta">Featured · Education · v1.1.0</span></div>
+    <p>My main project: a VS Code extension that helps students learn to code, with AI tutoring, live call graph visualisation and multi-model AI support (Gemini, OpenRouter, Ollama).</p>
+  </div>
   <div class="item">
     <div class="item-head"><a class="item-title" href="https://huggingface.co/dev0root6" target="_blank" rel="noopener">NeuralWatch</a><span class="item-meta">Wazuh · Llama-3.2-3B · FastAPI</span></div>
     <p>Agentic alert-triage pipeline: Wazuh SIEM, a QLoRA fine-tuned Llama-3.2-3B published on HuggingFace, a FastAPI orchestrator and a Discord approve/deny loop.</p>
@@ -226,10 +265,6 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
   <div class="item">
     <div class="item-head"><span class="item-title">Homelab</span><span class="item-meta">Tailscale · Grafana</span></div>
     <p>Tailscale-networked lab with Portainer, Grafana, Beszel, PiKVM and Cloudflare Workers heartbeat alerts.</p>
-  </div>
-  <div class="item">
-    <div class="item-head"><a class="item-title" href="https://github.com/dev0root6/Vertex-code-IDE" target="_blank" rel="noopener">Vertex-code-IDE</a><span class="item-meta">TypeScript · VS Code</span></div>
-    <p>VS Code extension with AI tutoring, live call graph visualization, and multi-model support via Gemini, OpenRouter and Ollama.</p>
   </div>
   <div class="item">
     <div class="item-head"><a class="item-title" href="https://github.com/dev0root6/TRACKER" target="_blank" rel="noopener">TRACKER</a><span class="item-meta">React · Cloudflare Workers · Neon</span></div>
