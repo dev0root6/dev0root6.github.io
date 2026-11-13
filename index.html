@@ -67,6 +67,10 @@ section p + p{margin-top:14px}
 .talk-imgs img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05) brightness(.85);transition:filter .4s,transform .4s}
 .talk-imgs img.poster{object-position:top}
 .talk-imgs a:hover img{filter:grayscale(1) contrast(1.15) brightness(1);transform:scale(1.03)}
+/* Five photos: tall poster on the left, four photos in a 2x2 grid beside it */
+.talk-imgs.five{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,auto)}
+.talk-imgs.five a:first-child{grid-row:span 2}
+.talk-imgs.five a:first-child img{height:100%;aspect-ratio:auto}
 
 .resume-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
 .btn{display:inline-block;padding:10px 18px;border:1px solid var(--text);text-decoration:none;font-size:14px;transition:background .2s,color .2s}
@@ -173,12 +177,14 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
   <h2>Talks &amp; Workshops</h2>
 
   <div class="talk">
-    <div class="item-head"><span class="item-title">Cyber Safety &amp; Online Security · Rotaract</span><span class="item-meta">Aug 2026 · Online</span></div>
-    <p class="talk-desc">Invited speaker for a joint awareness session run by Rotaract clubs across four regions: Kathmandu Mid-Town (Nepal &amp; Bhutan), Bangalore High Grounds (India), Colombo Regent (Sri Lanka &amp; Maldives) and Debo (Ethiopia). I spoke about why everyday users need to stay vigilant online, walked through how scams such as investment fraud play out in each country with region-specific numbers, and shared simple habits to stay safe. 50+ participants.</p>
-    <div class="talk-imgs">
-      <a href="IMAGES/talks/rotaract-poster.jpg" target="_blank" rel="noopener"><img class="poster" src="IMAGES/talks/rotaract-poster.jpg" alt="Rotaract poster for the Cyber Safety and Online Security session" loading="lazy"></a>
-      <a href="IMAGES/talks/rotaract-session-1.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/rotaract-session-1.jpg" alt="Presenting a slide on country-specific investment scams" loading="lazy"></a>
-      <a href="IMAGES/talks/rotaract-session-2.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/rotaract-session-2.jpg" alt="Participants from the Rotaract clubs in the online session" loading="lazy"></a>
+    <div class="item-head"><span class="item-title">Cyber Shield: Practical Learning in Cyber Security · Bangalore Institute of Technology</span><span class="item-meta">Nov 2026 · 3-day workshop</span></div>
+    <p class="talk-desc">Resource person for a three-day hands-on skill development workshop by the Department of Information Science &amp; Engineering, BIT Bengaluru. Covered threat modelling and ethical testing, vulnerability management, web and API security, and social engineering and account takeover. A key focus was why responsible disclosure matters, how phishing attacks work in practice, and how Android apps get exploited, with live lab sessions.</p>
+    <div class="talk-imgs five">
+      <a href="IMAGES/talks/bit-poster.jpg" target="_blank" rel="noopener"><img class="poster" src="IMAGES/talks/bit-poster.jpg" alt="Bangalore Institute of Technology poster for the Cyber Shield workshop" loading="lazy"></a>
+      <a href="IMAGES/talks/bit-class.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/bit-class.jpg" alt="Workshop participants in a classroom at BIT" loading="lazy"></a>
+      <a href="IMAGES/talks/bit-presenting.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/bit-presenting.jpg" alt="Demonstrating on a phone during the workshop" loading="lazy"></a>
+      <a href="IMAGES/talks/bit-lab.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/bit-lab.jpg" alt="Hands-on lab session with students at computers" loading="lazy"></a>
+      <a href="IMAGES/talks/bit-podium.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/bit-podium.jpg" alt="Speaking at the podium in the lab" loading="lazy"></a>
     </div>
   </div>
 
@@ -189,6 +195,16 @@ footer{padding:40px 0 56px;border-top:1px solid var(--border);color:var(--muted)
       <a href="IMAGES/talks/vels-poster.jpg" target="_blank" rel="noopener"><img class="poster" src="IMAGES/talks/vels-poster.jpg" alt="VELS University webinar poster: Mobile Credential Security" loading="lazy"></a>
       <a href="IMAGES/talks/vels-session.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/vels-session.jpg" alt="Presenting the Mobile Credential Security webinar" loading="lazy"></a>
       <a href="IMAGES/talks/vels-demo.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/vels-demo.jpg" alt="Demo dashboard used in the session, running against a test app" loading="lazy"></a>
+    </div>
+  </div>
+
+  <div class="talk">
+    <div class="item-head"><span class="item-title">Cyber Safety &amp; Online Security · Rotaract</span><span class="item-meta">Aug 2026 · Online</span></div>
+    <p class="talk-desc">Invited speaker for a joint awareness session run by Rotaract clubs across four regions: Kathmandu Mid-Town (Nepal &amp; Bhutan), Bangalore High Grounds (India), Colombo Regent (Sri Lanka &amp; Maldives) and Debo (Ethiopia). I spoke about why everyday users need to stay vigilant online, walked through how scams such as investment fraud play out in each country with region-specific numbers, and shared simple habits to stay safe. 50+ participants.</p>
+    <div class="talk-imgs">
+      <a href="IMAGES/talks/rotaract-poster.jpg" target="_blank" rel="noopener"><img class="poster" src="IMAGES/talks/rotaract-poster.jpg" alt="Rotaract poster for the Cyber Safety and Online Security session" loading="lazy"></a>
+      <a href="IMAGES/talks/rotaract-session-1.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/rotaract-session-1.jpg" alt="Presenting a slide on country-specific investment scams" loading="lazy"></a>
+      <a href="IMAGES/talks/rotaract-session-2.jpg" target="_blank" rel="noopener"><img src="IMAGES/talks/rotaract-session-2.jpg" alt="Participants from the Rotaract clubs in the online session" loading="lazy"></a>
     </div>
   </div>
 </section>
